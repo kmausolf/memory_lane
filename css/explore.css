@@ -1,0 +1,49 @@
+
+.nav a{
+  color: #7c645b;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 14px 10px;
+  text-transform: uppercase;
+}
+
+.nav li{
+  display: inline;
+  font-family: 'Arimo', sans-serif;
+}
+
+body{
+  padding-top: 40px;
+}
+
+.jumbotron{
+  background-image:url('');
+  min-height: 900px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.jumbotron .container{
+  position: relative;
+  top: 100px;
+}
+
+.jumbotron h1 {
+  color: #fff;
+  text-shadow:
+  -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  font-size: 40px;
+  font-family: 'Courgette', cursive;
+}
+
+.music_rec h1{
+  font-family: 'Arimo', sans-serif;
+}
+
+.thumbnail img{
+  max-height: 30%;
+  max-width: 30%;
+}
