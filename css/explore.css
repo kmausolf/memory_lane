@@ -39,8 +39,14 @@ body{
   font-family: 'Courgette', cursive;
 }
 
-.music_rec h1{
-  font-family: 'Arimo', sans-serif;
+.panel > .panel-heading{
+  background-image: none;
+  background-color: #A7E3D0;
+  color: white;
+}
+
+.panel > .panel-body{
+  background-color: #E5F6F1;
 }
 
 .thumbnail img{
