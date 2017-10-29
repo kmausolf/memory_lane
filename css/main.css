@@ -18,6 +18,10 @@
   background-size: cover;
 }
 
+.navbar-default {
+  background-color: rgba(0,0,0,0);
+}
+
 .jumbotron .container{
   position: relative;
   top: 100px;
@@ -32,6 +36,51 @@
     1px 1px 0 #000;
   font-size: 40px;
   font-family: 'Courgette', cursive;
+}
+
+#years {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#years input {
+  width: 10%;
+}
+
+#set {
+  display: flex;
+  flex-direction: column;
+  align-content: center; 
+}
+
+#set button {
+  width: 50px;
+}
+
+.container button {
+  margin-top: 10%;
+}
+
+.padding-0{
+    padding-right:0;
+    padding-left:0;
+}
+
+#set input {
+  height: 50px;
+  width: 50%;
+}
+
+#submit {
+  /* green button */
+  background-color: #48b63b;
+  border-radius: 500px;
+  font-size: 40px;
+} 
+
+button {
+  padding: 50px 10px 50px 10px;
 }
 
 .thumbnail img{
