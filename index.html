@@ -30,9 +30,9 @@
       <div class="container">
         <center>
           <h1>Memory Lane</h1>
-          <div class="input-group" id="years">
+          <div class="input-group" id="years" ng-controller="CountController as countCtrl">
             <div id="set" class="padding-0">
-              <button class="input-group-addon" id="basic-addon1">^</button>
+              <button class="input-group-addon" ng-click="increaseCount()">^</button>
               <input type="text" class="form-control" value="1" aria-describedby="year-1">
               <button class="input-group-addon" id="basic-addon1">v</button>
             </div>
@@ -58,7 +58,7 @@
     </div>
 
     <!-- End of Jumbotron ------------------------>
-
+    <script type="text/javascript" src="js/angular.min.js"></script>
   </body>
 
 </html>
