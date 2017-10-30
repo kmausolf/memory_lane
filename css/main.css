@@ -75,12 +75,14 @@
 #submit {
   /* green button */
   background-color: #48b63b;
-  border-radius: 500px;
+  border-radius: 100%;
   font-size: 40px;
+  width: 70px;
+  height: 70px;
 } 
 
-button {
-  padding: 50px 10px 50px 10px;
+#submit a {
+  color: black;
 }
 
 .thumbnail img{
