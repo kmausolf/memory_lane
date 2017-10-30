@@ -24,27 +24,27 @@
 
     <div class="jumbotron">
       <div class="container">
-        <center>
+        <center ng-app="years">
           <h1>Memory Lane</h1>
           <div class="input-group" id="years">
-            <div id="set" class="padding-0">
+            <div id="set" class="padding-0" ng-controller="CountController as cntCtrl">
               <button class="input-group-addon" id="basic-addon1">^</button>
-              <input type="text" class="form-control" value="1" aria-describedby="year-1">
+              <span> {{count}} </span>
               <button class="input-group-addon" id="basic-addon1">v</button>
             </div>
-            <div id="set" class="padding-0">
+            <div id="set" class="padding-0" ng-controller="CountController as cntCtrl">
               <button class="input-group-addon" id="basic-addon1">^</button>
-              <input type="text" class="form-control" value="9" aria-describedby="  year-2">
+              <span> {{count}} </span>
               <button class="input-group-addon" id="basic-addon1">v</button>
             </div>
-            <div id="set" class="padding-0"> 
+            <div id="set" class="padding-0" ng-controller="CountController as cntCtrl"> 
               <button class="input-group-addon" id="basic-addon1">^</button>
-              <input type="text" class="form-control" value="8" aria-describedby="year-3">
+              <span> {{count}} </span>
               <button class="input-group-addon" id="basic-addon1">v</button>
             </div>
-            <div id="set" class="padding-0">
+            <div id="set" class="padding-0" ng-controller="CountController as cntCtrl">
               <button class="input-group-addon" id="basic-addon1">^</button>
-              <input type="text" class="form-control" value="0" aria-describedby="year-4">
+              <span> {{count}} </span>
               <button class="input-group-addon" id="basic-addon1">v</button>
             </div>  
           </div>
@@ -54,7 +54,8 @@
     </div>
 
     <!-- End of Jumbotron ------------------------>
-
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/memory_lane.js"></script>
   </body>
 
 </html>
