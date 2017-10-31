@@ -24,28 +24,28 @@
 
     <div class="jumbotron">
       <div class="container">
-        <center ng-app="years">
+        <center ng-app="selecting">
           <h1>Memory Lane</h1>
           <div class="input-group" id="years">
             <div id="set" class="padding-0" ng-controller="CountController as cntCtrl">
-              <button class="input-group-addon" id="basic-addon1">^</button>
-              <span> {{count}} </span>
-              <button class="input-group-addon" id="basic-addon1">v</button>
+              <button class="input-group-addon" id="basic-addon1" ng-click="cntCtrl.increaseCount()">^</button>
+              <span> {{cntCtrl.count}} </span>
+              <button class="input-group-addon" id="basic-addon1" ng-click="cntCtrl.decreaseCount()">v</button>
             </div>
             <div id="set" class="padding-0" ng-controller="CountController as cntCtrl">
-              <button class="input-group-addon" id="basic-addon1">^</button>
-              <span> {{count}} </span>
-              <button class="input-group-addon" id="basic-addon1">v</button>
+              <button class="input-group-addon" id="basic-addon1" ng-click="cntCtrl.increaseCount()">^</button>
+              <span> {{cntCtrl.count}} </span>
+              <button class="input-group-addon" id="basic-addon1" ng-click="cntCtrl.decreaseCount()">v</button>
             </div>
             <div id="set" class="padding-0" ng-controller="CountController as cntCtrl"> 
-              <button class="input-group-addon" id="basic-addon1">^</button>
-              <span> {{count}} </span>
-              <button class="input-group-addon" id="basic-addon1">v</button>
+              <button class="input-group-addon" id="basic-addon1" ng-click="cntCtrl.increaseCount()">^</button>
+              <span> {{cntCtrl.count}} </span>
+              <button class="input-group-addon" id="basic-addon1" ng-click="cntCtrl.decreaseCount()">v</button>
             </div>
             <div id="set" class="padding-0" ng-controller="CountController as cntCtrl">
-              <button class="input-group-addon" id="basic-addon1">^</button>
-              <span> {{count}} </span>
-              <button class="input-group-addon" id="basic-addon1">v</button>
+              <button class="input-group-addon" id="basic-addon1" ng-click="cntCtrl.increaseCount()">^</button>
+              <span> {{cntCtrl.count}} </span>
+              <button class="input-group-addon" id="basic-addon1" ng-click="cntCtrl.decreaseCount()">v</button>
             </div>  
           </div>
           <button type="button" class="btn btn-default" id="submit">Go!</button>
