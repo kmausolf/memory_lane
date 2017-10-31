@@ -1,3 +1,4 @@
+
 .nav a{
   color: #7c645b;
   font-size: 11px;
@@ -11,15 +12,15 @@
   font-family: 'Arimo', sans-serif;
 }
 
+body{
+  padding-top: 40px;
+}
+
 .jumbotron{
   background-image:url('');
   min-height: 900px;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.navbar-default {
-  background-color: rgba(0,0,0,0);
 }
 
 .jumbotron .container{
@@ -38,51 +39,14 @@
   font-family: 'Courgette', cursive;
 }
 
-#years {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+.panel > .panel-heading{
+  background-image: none;
+  background-color: #A7E3D0;
+  color: white;
 }
 
-#years input {
-  width: 10%;
-}
-
-#set {
-  display: flex;
-  flex-direction: column;
-  align-content: center; 
-}
-
-#set button {
-  width: 50px;
-}
-
-.container button {
-  margin-top: 10%;
-}
-
-.padding-0{
-    padding-right:0;
-    padding-left:0;
-}
-
-#set input {
-  height: 50px;
-  width: 50%;
-}
-
-#submit {
-  /* green button */
-  background-color: #48b63b;
-  border-radius: 100%;
-  font-size: 30px;
-  width: 70px;
-  height: 70px;
-} 
-
-#submit a {
-  color: black;
+.panel > .panel-body{
+  background-color: #E5F6F1;
 }
 
 .thumbnail img{
