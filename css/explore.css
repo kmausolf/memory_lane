@@ -13,7 +13,7 @@
 }
 
 body{
-  padding-top: 40px;
+  padding-top: 75px;
 }
 
 .jumbotron{
@@ -41,12 +41,39 @@ body{
 
 .panel > .panel-heading{
   background-image: none;
-  background-color: #A7E3D0;
   color: white;
 }
 
-.panel > .panel-body{
-  background-color: #E5F6F1;
+#music-rec{
+  background-color: #E3A7D8;
+}
+
+#music-panel{
+  background-color: #F1D3EC;
+}
+
+#news-rec{
+  background-color: #A7D8E3;
+}
+
+#news-panel{
+  background-color: #D3ECF1;
+}
+
+#movie-rec{
+  background-color: #A7E3D0;
+}
+
+#movie-panel{
+  background-color: #D3F1E8;
+}
+
+#shows-rec{
+  background-color: #B2A7E3;
+}
+
+#shows-panel{
+  background-color: #D8D3F1;
 }
 
 .thumbnail img{
