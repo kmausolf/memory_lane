@@ -1,6 +1,6 @@
 .nav a{
   color: #7c645b;
-  font-size: 11px;
+  font-size: 28px;
   font-weight: bold;
   padding: 14px 10px;
   text-transform: uppercase;
@@ -9,6 +9,12 @@
 .nav li{
   display: inline;
   font-family: 'Arimo', sans-serif;
+}
+
+.nav img{
+  width: 28px;
+  height: 28px;
+  border: 0;
 }
 
 .jumbotron{
@@ -51,7 +57,7 @@
 #set {
   display: flex;
   flex-direction: column;
-  align-content: center; 
+  align-content: center;
 }
 
 #set button {
@@ -79,7 +85,7 @@
   font-size: 30px;
   width: 70px;
   height: 70px;
-} 
+}
 
 #submit a {
   color: black;
