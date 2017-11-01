@@ -89,3 +89,16 @@ ul{
   max-height: 30%;
   max-width: 30%;
 }
+
+img.resize {
+  width: 100px;
+  height: 100px; 
+}
+
+#test1-1 {
+                width: 100px;
+            height: 100px;
+            background-image: url('Years/1972/Movies/Deliverance_Image.jpeg');
+            background-size: 100% 100%;
+    
+}
