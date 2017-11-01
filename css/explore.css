@@ -21,6 +21,10 @@ body{
   padding-top: 100px;
 }
 
+ul{
+  list-style-type: none;
+}
+
 .jumbotron{
   background-image:url('');
   min-height: 900px;
