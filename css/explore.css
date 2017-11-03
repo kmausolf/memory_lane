@@ -106,7 +106,7 @@ img.resize {
 }
 .content_box {
   width:19%;
-  height: 13.5vw;
+  height: 17vw;
   float:left;
   margin-right: 1vw;
 }
@@ -130,5 +130,5 @@ img.resize {
   
   float:right;
   position:relative;
-  top: 1vw;
+  top: 3vw;
 }
