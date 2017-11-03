@@ -105,9 +105,8 @@ img.resize {
   clear:both;
 }
 .content_box {
-  /*width: 18.41%;*/
-  width:12vw;
-  height: 12vw;
+  width:19%;
+  height: 13.5vw;
   float:left;
   margin-right: 1vw;
 }
@@ -124,12 +123,12 @@ img.resize {
 
 }
 .refresh_thumbnail {
-  height:80%;
-  width:80%;
+  height:100%;
+  width:100%;
   object-fit:fill;
-    
   border-radius: 50%;
+  
   float:right;
   position:relative;
-  top: 2vw;
+  top: 1vw;
 }
