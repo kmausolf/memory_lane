@@ -12,6 +12,8 @@
 
     <!--javascript-->
     <script src="js/explore.js"></script>
+    <script src="Years/2010/explore_2010.js"></script>
+      
       
   </head>
 
@@ -151,30 +153,49 @@
           <div class="content_wrapper" id="dynamicheight">
               
             <div class="content_box">
-              <a href="closeup.html"><img class="content_thumbnail" src="images/Filler.jpg" title="Filler"></a>
+              <a id="movies_link1" href="closeup.html"><img id="movies_thumbnail1" class="content_thumbnail" src="images/Filler.jpg"></a>
             </div>
               
-            <div class="content_box">
-              <a href="closeup.html"><img class="content_thumbnail" src="images/Filler.jpg" title="Filler"></a>
+            <div class="content_box" id="movies_content_2">
+              <a id="movies_link2" href="closeup.html"><img id="movies_thumbnail2" class="content_thumbnail" src="images/Filler.jpg"></a>
             </div>
               
-            <div class="content_box">
-              <a href="Years/1972/Movies/Deliverance.html"><img class="content_thumbnail" src="Years/1972/Movies/Deliverance_Image.jpeg" title="Deliverance"></a>
+            <div class="content_box" id="movies_content_4">
+              <a id="movies_link4" href="closeup.html"><img id="movies_thumbnail3" class="content_thumbnail" src="images/Filler.jpg"></a>
             </div>
               
-            <div class="content_box">
-              <a href="closeup.html"><img class="content_thumbnail" src="images/Filler.jpg" title="Filler"></a>
+            <div class="content_box" id="movies_content_4">
+              <a id="movies_link4" href="closeup.html"><img id="movies_thumbnail4" class="content_thumbnail" src="images/Filler.jpg"></a>
             </div>
               
-            <div class="refresh_box">
-              <a href="explore_part2.html"><img class="refresh_thumbnail" src="images/Refresh.png"></a>
+              
+              
+            <div class="refresh_box" id="movies_refresh">
+              <img class="refresh_thumbnail" src="images/Refresh.png" onClick="fill_movies();">
+            </div>
+            
+              
+              <!--
+            <div class="refresh_box" id="movies_refresh">
+              <a id="movies_link1" href="#" onclick="alert('test')"><img class="refresh_thumbnail" src="images/Refresh.png"></a>
+            </div>
+          -->
+              
+              <!--
+            <div class="refresh_box" id="movies_refresh">
+              <a id="movies_link1" href="explore_part2.html"><img class="refresh_thumbnail" src="images/Refresh.png"></a>
             </div> 
+                -->
               
           </div>
         </div>   
       </div>
       <!-- End Movie Recommender -------------------------------------------------->
 
+      <!-- javascript -->
+
+        
+        
     </div>
     <!-- End Recommender Container -------------------------------------------------->
 
