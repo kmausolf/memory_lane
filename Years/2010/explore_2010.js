@@ -1,6 +1,33 @@
 /*jslint devel: true */
 
-var shuffle, fill_movies;
+var shuffle_movies, fill_movies;
+
+
+//Fisher-Yates shuffle to shuffle an array
+//https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+function shuffle_movies(array) {
+    //"use strict";
+
+    alert('wtf2');
+    
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    //return the shuffled array
+    return array;
+}
 
 
 var movies = ["Black_Swan",
@@ -14,9 +41,10 @@ var movies = ["Black_Swan",
               "Toy_Story_3"];
 
 function fill_movies() {
+    //"use strict";
 
     alert('wtf1');
-    shuffe_movies(movies);
+    shuffle_movies(movies);
     
     alert('wtf3');
     
@@ -39,31 +67,6 @@ function fill_movies() {
 }
 
 
-//Fisher-Yates shuffle to shuffle an array
-//https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-function shuffle_movies(array) {
-
-    
-    alert('wtf2');
-    
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-
-        // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    //return the shuffled array
-    return array;
-}
 
 
 /*
