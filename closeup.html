@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap Basic Template End -->
 
-    <!-- ??? -->
+    <!-- Style references -->
     <link href="https://fonts.googleapis.com/css?family=Arimo|Courgette" rel="stylesheet">
     <link rel="stylesheet" href="https://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
     <link rel="stylesheet" href="css/closeup.css">
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 
-    <!-- ??? end -->
+    <!-- Style References end -->
   </head>
   <body>
 
@@ -32,17 +32,41 @@
 
     <div class="jumbotron">
       <div class="container">
-        <center>
-          <h1>Content Coming soon!</h1>
-        </center>
+        <script id="display-template" type="text/x-handlebars-template">
+          <center>
+            <!-- identify type of the item displayed -->
+            <h1>{{type}}</h1>
+            <!-- the title of the movie -->
+            <h2>{{title}}</h2>
+            <div id="display-pic">
+              <!--path to full size image --> 
+              <img ng-src="{{picture}}"/>
+            </div>
+
+            <div id="display-info">
+              <!-- Year of media -->
+              <p> {{year}} </p>
+              <!-- Description for given content -->
+              <p> {{description}} </p>
+            </div>
+          </center>
+        </script>
+        <div id="display-result">
+
+        </div>  
       </div>
     </div>
+
+
 
     <!-- End of Jumbotron ------------------------>
 
     <!-- Bootstrap Basic Template -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="js/handlebars-latest.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/displays.js"></script>
     <!-- Bootstrap Basic Template End -->
   </body>
 </html>

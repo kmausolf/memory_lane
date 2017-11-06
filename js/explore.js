@@ -7,6 +7,8 @@
 */
 
 
+
+
 //randomly select from a folder
 var i = Math.floor(Math.random() * 6) + 1;
 $("#my-div").load('//' + i + '.html');

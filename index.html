@@ -33,27 +33,27 @@
           <div class="input-group" id="years">
             <div id="thousands" class="padding-0" ng-controller="CountController as cntCtrl">
               <button class="set input-group-addon" id="basic-addon1" ng-click="cntCtrl.increaseCount('thousands')">^</button>
-              <span> {{cntCtrl.count}} </span>
+              <span> <p>{{cntCtrl.count}} </p></span>
               <button class="input-group-addon" id="basic-addon1" ng-click="cntCtrl.decreaseCount('thousands')">v</button>
             </div>
             <div id="hundreds" class="set padding-0" ng-controller="CountController as cntCtrl">
               <button class="input-group-addon" id="basic-addon1" ng-click="cntCtrl.increaseCount('hundreds')">^</button>
-              <span> {{cntCtrl.count}} </span>
+              <span><p> {{cntCtrl.count}} </p></span>
               <button class="input-group-addon" id="basic-addon1" ng-click="cntCtrl.decreaseCount('hundreds')">v</button>
             </div>
             <div id="tens" class="set padding-0" ng-controller="CountController as cntCtrl">
               <button class="input-group-addon" id="basic-addon1" ng-click="cntCtrl.increaseCount('tens')">^</button>
-              <span> {{cntCtrl.count}} </span>
+              <span><p> {{cntCtrl.count}} </p></span>
               <button class="input-group-addon" id="basic-addon1" ng-click="cntCtrl.decreaseCount('tens')">v</button>
             </div>
             <div id="ones" class="set padding-0" ng-controller="CountController as cntCtrl">
               <button class="input-group-addon" id="basic-addon1" ng-click="cntCtrl.increaseCount('ones')">^</button>
-              <span> {{cntCtrl.count}} </span>
+              <span><p> {{cntCtrl.count}} </p></span>
               <button class="input-group-addon" id="basic-addon1" ng-click="cntCtrl.decreaseCount('ones')">v</button>
             </div>
           </div>
           <div ng-controller="ExploreController as exCtrl">
-            <button type="button" class="btn btn-default button" id="submit"  ng-click="exCtrl.checkYear()">BEGIN</button>
+            <button type="button" class="btn btn-default button" id="submit"  ng-click="exCtrl.checkYear()">GO</button>
           </div>
 
 
@@ -64,6 +64,7 @@
     <!-- End of Jumbotron ------------------------>
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/memory_lane.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   </body>
 
 </html>
