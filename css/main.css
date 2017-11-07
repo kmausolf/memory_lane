@@ -17,6 +17,15 @@
   border: 0;
 }
 
+body {
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
+}
+
 .jumbotron{
   background-image:url('');
   min-height: 900px;

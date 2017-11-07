@@ -4,11 +4,8 @@
 <!--Includes-->
   <head>
     <link href="https://fonts.googleapis.com/css?family=Arimo|Courgette" rel="stylesheet">
-    <link rel="stylesheet" href="https://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-
-
   </head>
 
   <body>
@@ -18,11 +15,35 @@
         <ul class="pull-left">
         </ul>
         <ul class="pull-right">
+          <li><button class="btn btn-info" type="button" data-toggle="collapse" data-target="#login" aria-expanded="false">Login</button></li>
           <li><a href="settings.html"><img src="images/settings_gear.png"></a></li>
         </ul>
       </div>
     </nav>
     <!-- End of Nav Bar ------------------------>
+
+    <!-- Login collapsible --------------------->
+
+    <div class="container-fluid">
+      <div class="collapse" id="login">
+        <form>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="pwd">
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox"> Remember me</label>
+          </div>
+          <button type="submit" class="btn btn-default">Log In</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- End of Login -------------------------->
 
     <!-- Jumbotron ------------------------>
 
@@ -62,9 +83,12 @@
     </div>
 
     <!-- End of Jumbotron ------------------------>
+
+
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/memory_lane.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 
 </html>
