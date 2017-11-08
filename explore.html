@@ -145,7 +145,11 @@
         <div class="panel-body", id="movie-panel">
           <div class="content_wrapper" id="dynamicheight">
 
-            <div class="content_box">
+            <script type="text/javascript">
+              function fill_movies();
+            </script>
+              
+            <div class="content_box" id="movies_content_1">
               <a id="movies_link1" href="closeup.html"><img id="movies_thumbnail1" class="content_thumbnail" src="images/Filler.jpg"></a>
             </div>
 
@@ -153,8 +157,8 @@
               <a id="movies_link2" href="closeup.html"><img id="movies_thumbnail2" class="content_thumbnail" src="images/Filler.jpg"></a>
             </div>
 
-            <div class="content_box" id="movies_content_4">
-              <a id="movies_link4" href="closeup.html"><img id="movies_thumbnail3" class="content_thumbnail" src="images/Filler.jpg"></a>
+            <div class="content_box" id="movies_content_3">
+              <a id="movies_link3" href="closeup.html"><img id="movies_thumbnail3" class="content_thumbnail" src="images/Filler.jpg"></a>
             </div>
 
             <div class="content_box" id="movies_content_4">
@@ -162,17 +166,26 @@
             </div>
 
 
-
+<!--
             <div class="refresh_box" id="movies_refresh">
               <img class="refresh_thumbnail" src="images/Refresh.png" onClick="fill_movies();">
             </div>
+          
+              <button onclick="fill_movies();"><img src="images/Refresh.png"></button>
 
-
-              <!--
             <div class="refresh_box" id="movies_refresh">
-              <a id="movies_link1" href="#" onclick="alert('test')"><img class="refresh_thumbnail" src="images/Refresh.png"></a>
+              <a id="movies_link1" onclick="alert('test')">
+                  <img class="refresh_thumbnail" src="images/Refresh.png" onmouseover="" style="cursor: pointer;">
+              </a>
             </div>
-          -->
+              -->
+              
+            <div class="refresh_box" id="movies_refresh">
+              <a id="movies_link1" onclick="fill_movies()">
+                  <img class="refresh_thumbnail" src="images/Refresh.png" onmouseover="" style="cursor: pointer;">
+              </a>
+            </div>
+
 
               <!--
             <div class="refresh_box" id="movies_refresh">
