@@ -49,8 +49,8 @@
 			this.currentYear = (year[0]['thousands']*1000 + year[0]['hundreds']*100 + year[0]['tens']*10 + year[0]['ones']);
 
             localStorage.setItem("selected_year", this.currentYear);
-            alert('this.currentYear: ' + this.currentYear);
-            alert('selected year: ' + localStorage.selected_year);
+            //alert('this.currentYear: ' + this.currentYear);
+            //alert('selected year: ' + localStorage.selected_year);
           
             window.location = "explore.html";
             /*
