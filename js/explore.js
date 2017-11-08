@@ -67,7 +67,6 @@ function fill_movies() {
   var moviesArray = 'movies' + localStorage.selected_year;
   shuffle_array(window[moviesArray]);
 
-<<<<<<< HEAD
   document.getElementById("movies_thumbnail1").src = movies1970[0].picture;
 
   document.getElementById("movies_thumbnail2").src = movies1970[1].picture;
