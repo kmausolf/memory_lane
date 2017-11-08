@@ -106,3 +106,9 @@ body {
   max-height: 30%;
   max-width: 30%;
 }
+
+.fit {
+  height:100%;
+  width:100%;
+  object-fit:fill;
+}
