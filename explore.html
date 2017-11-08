@@ -22,7 +22,12 @@
           <li><a href="settings.html"><img src="images/settings_gear.png"></a></li>
         </ul>
         <ul class="text-center">
-          <li><a href="#">Explore Before</a></li>
+          <script>
+            document.write("<li><a href=\"#\">" + localStorage.selected_year + "</a></li>");
+          </script>
+          <!--
+          <li><a href="#">"localStorage.selected_year"</a></li>
+-->
         </ul>
       </div>
     </nav>
