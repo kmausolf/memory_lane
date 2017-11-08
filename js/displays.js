@@ -113,7 +113,6 @@ var template = Handlebars.compile(source);
 var parentDiv = $("#display-result");
 
 function newPage(cat, obj) {
-	console.log(obj);
 	for( var i = 0; i < cat.length; i++ ) {
 		if( cat[i][picture] == obj ) {
 			var temp = object[0];
