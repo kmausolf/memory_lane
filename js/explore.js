@@ -35,7 +35,8 @@ function fill_news() {
 
 function fill_music() {
   "use strict";
-  shuffle_array(music1970);
+  var musicArray = 'music' + localStorage.selected_year;
+  shuffle_array(window[musicArray]);
 
   document.getElementById("music_thumbnail1").src = music1970[0].picture;
 
@@ -48,7 +49,8 @@ function fill_music() {
 
 function fill_shows() {
   "use strict";
-  shuffle_array(shows1970);
+  var showsArray = 'shows' + localStorage.selected_year;
+  shuffle_array(window[showsArray]);
 
   document.getElementById("shows_thumbnail1").src = shows1970[0].picture;
 
@@ -57,12 +59,15 @@ function fill_shows() {
   document.getElementById("shows_thumbnail3").src = shows1970[2].picture;
 
   document.getElementById("shows_thumbnail4").src = shows1970[3].picture;
+
 }
 
 function fill_movies() {
   "use strict";
-  shuffle_array(movies1970);
+  var moviesArray = 'movies' + localStorage.selected_year;
+  shuffle_array(window[moviesArray]);
 
+<<<<<<< HEAD
   document.getElementById("movies_thumbnail1").src = movies1970[0].picture;
 
   document.getElementById("movies_thumbnail2").src = movies1970[1].picture;
@@ -92,4 +97,5 @@ function onCatClick(cat, img) {
 
     location.assign("closeup.html");
 };
+
 
