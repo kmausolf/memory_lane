@@ -37,16 +37,12 @@ function fill_music() {
   "use strict";
   shuffle_array(music1970);
 
-  document.getElementById("music_link1").href = "closeup.html";
   document.getElementById("music_thumbnail1").src = music1970[0].picture;
 
-  document.getElementById("music_link2").href = "closeup.html";
   document.getElementById("music_thumbnail2").src = music1970[1].picture;
 
-  document.getElementById("music_link3").href = "closeup.html";
   document.getElementById("music_thumbnail3").src = music1970[2].picture;
 
-  document.getElementById("music_link4").href = "closeup.html";
   document.getElementById("music_thumbnail4").src = music1970[3].picture;
 }
 
@@ -54,16 +50,12 @@ function fill_shows() {
   "use strict";
   shuffle_array(shows1970);
 
-  document.getElementById("shows_link1").href = "closeup.html";
   document.getElementById("shows_thumbnail1").src = shows1970[0].picture;
 
-  document.getElementById("shows_link2").href = "closeup.html";
   document.getElementById("shows_thumbnail2").src = shows1970[1].picture;
 
-  document.getElementById("shows_link3").href = "closeup.html";
   document.getElementById("shows_thumbnail3").src = shows1970[2].picture;
 
-  document.getElementById("shows_link4").href = "closeup.html";
   document.getElementById("shows_thumbnail4").src = shows1970[3].picture;
 }
 
@@ -71,15 +63,33 @@ function fill_movies() {
   "use strict";
   shuffle_array(movies1970);
 
-  document.getElementById("movies_link1").href = "closeup.html";
   document.getElementById("movies_thumbnail1").src = movies1970[0].picture;
 
-  document.getElementById("movies_link2").href = "closeup.html";
   document.getElementById("movies_thumbnail2").src = movies1970[1].picture;
 
-  document.getElementById("movies_link3").href = "closeup.html";
   document.getElementById("movies_thumbnail3").src = movies1970[2].picture;
 
-  document.getElementById("movies_link4").href = "closeup.html";
   document.getElementById("movies_thumbnail4").src = movies1970[3].picture;
 }
+
+function newPage(cat, img) {
+  for( var i = 0; i < cat.length; i++ ) {
+    if( cat[i][picture] == img ) {
+      var temp = object[0];
+      break;
+    }
+  }
+  var html = template(temp);
+  console.log(html);
+  parentDiv.append(html);
+}
+
+
+function onCatClick(cat, img) {
+
+    localStorage.setItem('cat', JSON.stringify(cat));
+    localStorage.setItem('img', img);
+
+    location.assign("closeup.html");
+};
+
