@@ -62,7 +62,7 @@ var movies1960 = [
 ]
 
 var shows1960 = [
-    {"type": "Show", "creator": "Sheldon Leonard, Aaron Ruben, Danny Thomas", "title": "The Andy Griffith Show",  "picture": "Years/1960/Shows/amc.jpg", "year": "1960", "description": "Widower Sheriff Andy Taylor, and his son Opie, live with Andy's Aunt Bee in Mayberry, North Carolina. With virtually no crimes to solve, most of Andy's time is spent philosophizing and calming down his cousin Deputy Barney Fife."},
+    {"type": "Show", "creator": "Sheldon Leonard, Aaron Ruben, Danny Thomas", "title": "The Andy Griffith Show",  "picture": "Years/1960/Shows/tags.jpg", "year": "1960", "description": "Widower Sheriff Andy Taylor, and his son Opie, live with Andy's Aunt Bee in Mayberry, North Carolina. With virtually no crimes to solve, most of Andy's time is spent philosophizing and calming down his cousin Deputy Barney Fife."},
     {"type": "Show", "creator": "", "title": "My Three Sons",  "picture": "Years/1960/Shows/mts.jpg", "year": "1960", "description": "Widower Steve Douglas raises three sons with the help of his father-in-law, and is later aided by the boys' great-uncle. An adopted son, a stepdaughter, wives, and another generation of sons join the loving family in later seasons."},
     {"type": "Show", "creator": "Joseph Barbera, William Hanna", "title": "The Flintstones",  "picture": "Years/1960/Shows/hbtf.jpg", "year": "1960", "description": "The misadventures of two modern-day Stone Age families, the Flintstones and the Rubbles."},
     {"type": "Show", "creator": "Stirling Silliphant, Herbert B. Leonard", "title": "Route 66",  "picture": "Years/1960/Shows/rt66.jpg", "year": "1960", "description": "The adventures of two young drifters across America."},
