@@ -38,7 +38,7 @@ function shuffle_array(array) {
     return array;
 }
 
-/*
+
 var music1970 = [
     {"type": "Song", "artist": "Wild Cherry", "title": "Play That Funky Music", "picture": "Years/1970/Music/wcpf.jpg", "year": "1976", "description": "White boy not required."},
     {"type": "Song", "artist": "Hot Stuff", "title": "Donna Summer", "picture": "Years/1970/Music/dshs.jpg", "year": "1979", "description": "Only the hottest of stuff here at Memory Lane!"},
@@ -71,7 +71,7 @@ var movies1970 = [
     {"type": "Movie", "director": "Mel Brooks", "title": "Young Frankenstein",  "picture": "Years/1970/Movies/mbyf.jpg", "year": "1974", "description": "An American grandson of the infamous scientist, struggling to prove that he is not as insane as people believe, is invited to Transylvania, where he discovers the process that reanimates a dead body."},
     {"type": "Movie", "director": "George Lucas", "title": "Star Wars: Episode IV - A New Hope",  "picture": "Years/1970/Movies/anh.jpg", "year": "1977", "description": "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee, and two droids to save the galaxy from the Empire's world-destroying battle-station, while also attempting to rescue Princess Leia from the evil Darth Vader."}
 ]
-*/
+
 
 function fill_news() {
 

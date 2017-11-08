@@ -118,7 +118,7 @@ img.resize {
   height:100%;
   width:100%;
   object-fit:fill;
-
+  border-radius: 15%;
 }
 .refresh_thumbnail {
   height:100%;
@@ -129,4 +129,5 @@ img.resize {
   float:right;
   position:relative;
   top: 3vw;
+  right: 1.75vw;
 }
