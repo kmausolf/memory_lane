@@ -38,17 +38,13 @@ function fill_music() {
   var musicArray = 'music' + localStorage.selected_year;
   shuffle_array(window[musicArray]);
 
-  document.getElementById("music_link1").href = "closeup.html";
-  document.getElementById("music_thumbnail1").src = window[musicArray][0].picture;
+  document.getElementById("music_thumbnail1").src = music1970[0].picture;
 
-  document.getElementById("music_link2").href = "closeup.html";
-  document.getElementById("music_thumbnail2").src = window[musicArray][1].picture;
+  document.getElementById("music_thumbnail2").src = music1970[1].picture;
 
-  document.getElementById("music_link3").href = "closeup.html";
-  document.getElementById("music_thumbnail3").src = window[musicArray][2].picture;
+  document.getElementById("music_thumbnail3").src = music1970[2].picture;
 
-  document.getElementById("music_link4").href = "closeup.html";
-  document.getElementById("music_thumbnail4").src = window[musicArray][3].picture;
+  document.getElementById("music_thumbnail4").src = music1970[3].picture;
 }
 
 function fill_shows() {
@@ -56,17 +52,14 @@ function fill_shows() {
   var showsArray = 'shows' + localStorage.selected_year;
   shuffle_array(window[showsArray]);
 
-  document.getElementById("shows_link1").href = "closeup.html";
-  document.getElementById("shows_thumbnail1").src = window[showsArray][0].picture;
+  document.getElementById("shows_thumbnail1").src = shows1970[0].picture;
 
-  document.getElementById("shows_link2").href = "closeup.html";
-  document.getElementById("shows_thumbnail2").src = window[showsArray][1].picture;
+  document.getElementById("shows_thumbnail2").src = shows1970[1].picture;
 
-  document.getElementById("shows_link3").href = "closeup.html";
-  document.getElementById("shows_thumbnail3").src = window[showsArray][2].picture;
+  document.getElementById("shows_thumbnail3").src = shows1970[2].picture;
 
-  document.getElementById("shows_link4").href = "closeup.html";
-  document.getElementById("shows_thumbnail4").src = window[showsArray][3].picture;
+  document.getElementById("shows_thumbnail4").src = shows1970[3].picture;
+
 }
 
 function fill_movies() {
@@ -74,15 +67,34 @@ function fill_movies() {
   var moviesArray = 'movies' + localStorage.selected_year;
   shuffle_array(window[moviesArray]);
 
-  document.getElementById("movies_link1").href = "closeup.html";
-  document.getElementById("movies_thumbnail1").src = window[moviesArray][0].picture;
+  document.getElementById("movies_thumbnail1").src = movies1970[0].picture;
 
-  document.getElementById("movies_link2").href = "closeup.html";
-  document.getElementById("movies_thumbnail2").src = window[moviesArray][1].picture;
+  document.getElementById("movies_thumbnail2").src = movies1970[1].picture;
 
-  document.getElementById("movies_link3").href = "closeup.html";
-  document.getElementById("movies_thumbnail3").src = window[moviesArray][2].picture;
+  document.getElementById("movies_thumbnail3").src = movies1970[2].picture;
 
-  document.getElementById("movies_link4").href = "closeup.html";
-  document.getElementById("movies_thumbnail4").src = window[moviesArray][3].picture;
+  document.getElementById("movies_thumbnail4").src = movies1970[3].picture;
 }
+
+function newPage(cat, img) {
+  for( var i = 0; i < cat.length; i++ ) {
+    if( cat[i][picture] == img ) {
+      var temp = object[0];
+      break;
+    }
+  }
+  var html = template(temp);
+  console.log(html);
+  parentDiv.append(html);
+}
+
+
+function onCatClick(cat, img) {
+
+    localStorage.setItem('cat', JSON.stringify(cat));
+    localStorage.setItem('img', img);
+
+    location.assign("closeup.html");
+};
+
+
