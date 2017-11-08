@@ -32,31 +32,28 @@
     <div class="jumbotron">
       <div class="container">
         <script id="display-template" type="text/x-handlebars-template">
-          <center>
-            <!-- identify type of the item displayed -->
-            <h1>{{type}}</h1>
-            <!-- the title of the movie -->
-            <h2>{{title}}</h2>
-            <div id="display-pic">
-              <!--path to full size image -->
-              <img src="{{picture}}"/>
-            </div>
 
-            <div id="display-info">
-              <!-- Year of media -->
-              <p> {{year}} </p>
-              <!-- Description for given content -->
-              <p> {{description}} </p>
-            </div>
+<center>
+  <!-- identify type of the item displayed -->
+  <h1>{{type}}</h1>
+  <!-- the title of the movie -->
+  <h2>{{title}}</h2>
+  <div id="display-pic">
+    <!--path to full size image -->
+    <img src="{{picture}}"/>
+          </div>
+  <div id="display-info">
+    <!-- Year of media -->
+    <p> {{year}} </p>
+    <!-- Description for given content -->
+    <p> {{description}} </p>
+          </div>
           </center>
-        </script>
-        <div id="display-result">
 
-        </div>
+        </script>
+        <div id="display-result"></div>
       </div>
     </div>
-
-
 
     <!-- End of Jumbotron ------------------------>
 

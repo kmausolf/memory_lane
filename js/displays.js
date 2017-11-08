@@ -107,8 +107,6 @@ var shows1950 = [
 
 //-----------------------------END DATASET----------------------------------
 
-
-
 var source = $("#display-template").html();
 var template = Handlebars.compile(source);
 
@@ -117,4 +115,3 @@ var parentDiv = $("#display-result");
 var html = template(objects[0]);
 console.log(html);
 parentDiv.append(html);
-
