@@ -3,6 +3,12 @@
 //Fisher-Yates shuffle to shuffle an array
 //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 
+//calls function upon page load
+$(document).ready(function(){
+    fill_movies();
+});
+
+
 //shuffles an array
 function shuffle_array(array) {
     "use strict";
