@@ -112,6 +112,19 @@ var template = Handlebars.compile(source);
 
 var parentDiv = $("#display-result");
 
-var html = template(objects[0]);
-console.log(html);
-parentDiv.append(html);
+function newPage(cat, obj) {
+	console.log(obj);
+	for( var i = 0; i < cat.length; i++ ) {
+		if( cat[i][picture] == obj ) {
+			var temp = object[0];
+			break;
+		}
+
+	}
+	var html = template(temp);
+	console.log(html);
+	parentDiv.append(html);
+}
+
+
+
