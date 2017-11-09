@@ -11,13 +11,13 @@
 }
 
 .nav img{
-  width: 28px;
-  height: 28px;
+  width: 5vw;
+  height: 5vw;
   border: 0;
 }
 
 body{
-  padding-top: 100px;
+  padding-top: 120px;
 }
 
 ul{
