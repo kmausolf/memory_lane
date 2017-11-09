@@ -38,20 +38,26 @@
       <div class="container">
         <script id="display-template" type="text/x-handlebars-template">
           <center>
+            
             <!-- identify type of the item displayed -->
             <h1>{{type}}</h1>
+            
             <!-- the title of the movie -->
             <h2>{{title}}</h2>
+            
+            <!-- path to full size image -->
             <div id="display-pic">
-              <!--path to full size image -->
               <img src="{{picture}}"/>
-                    </div>
+            </div>
+            
+            <!-- year of media -->
             <div id="display-info">
-              <!-- Year of media -->
               <p> {{year}} </p>
+              
               <!-- Description for given content -->
               <p> {{description}} </p>
             </div>
+            
           </center>
         </script>
         <div id="display-result"></div>
@@ -64,6 +70,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="js/handlebars-latest.js"></script>
+    <script>
+      var source = $("#display-template").html();
+      var template = Handlebars.compile(source);
+      var parentDiv = $("#display-result");
+    </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="js/displays.js"></script>
     <script src="js/closeup.js"></script>

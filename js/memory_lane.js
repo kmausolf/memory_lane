@@ -48,19 +48,11 @@
 		this.checkYear = function(){
 			this.currentYear = (year[0]['thousands']*1000 + year[0]['hundreds']*100 + year[0]['tens']*10 + year[0]['ones']);
 
+            //keeps track of the current year in localStorage.selected_year
             localStorage.setItem("selected_year", this.currentYear);
-            //alert('this.currentYear: ' + this.currentYear);
-            //alert('selected year: ' + localStorage.selected_year);
-          
+
+            //moves to next page
             window.location = "explore.html";
-            /*
-			if( (year[0]['thousands']*1000 + year[0]['hundreds']*100 + year[0]['tens']*10 + year[0]['ones']) > 1980 ){
-				window.location = "explore2.html";
-			}
-			else {
-				window.location = "explore.html";
-			}
-            */
 		}
 	});
 })();
