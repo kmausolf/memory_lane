@@ -81,10 +81,12 @@ function newPage(cat, img) {
       break;
     }
   }
+  //fill in template from closeup.html
   var html = template(temp);
   console.log(html);
   parentDiv.append(html);
 }
+
 function onCatClick(cat, img) {
     //variable for section+year (ex: movies1970)
     cat = cat + localStorage.selected_year;
