@@ -20,4 +20,5 @@ function newPage() {
 
 $(document).ready(function() {
   newPage();
+  localStorage.setItem("previous_page", "closeup");
 });

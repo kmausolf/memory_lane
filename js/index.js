@@ -50,7 +50,9 @@
 
             //keeps track of the current year in localStorage.selected_year
             localStorage.setItem("selected_year", this.currentYear);
-
+            //keeps track of which page explore page is being loaded from
+            localStorage.setItem("previous_page", "home");
+          
             //moves to next page
             window.location = "explore.html";
 		}

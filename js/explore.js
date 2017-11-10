@@ -42,8 +42,13 @@ function fill_news() {
 //fills in music section
 function fill_music() {
   "use strict";
-  shuffle_array(window[musicArray]);
+  
+  //only shuffles musicArray if called from home page or refresh button
+  if(localStorage.getItem("previous_page") == "home"){
+    shuffle_array(window[musicArray]);
+  }
 
+  //fills the Music section of explore page
   document.getElementById("music_thumbnail1").src = window[musicArray][0].picture;
   document.getElementById("music_thumbnail2").src = window[musicArray][1].picture;
   document.getElementById("music_thumbnail3").src = window[musicArray][2].picture;
@@ -53,8 +58,13 @@ function fill_music() {
 //fills in the shows section
 function fill_shows() {
   "use strict";
-  shuffle_array(window[showsArray]);
+  
+  //only shuffles showsArray if called from home page or refresh button
+  if(localStorage.getItem("previous_page") == "home"){
+    shuffle_array(window[showsArray]);
+  }
 
+  //fills the Shows section of explore page
   document.getElementById("shows_thumbnail1").src = window[showsArray][0].picture;
   document.getElementById("shows_thumbnail2").src = window[showsArray][1].picture;
   document.getElementById("shows_thumbnail3").src = window[showsArray][2].picture;
@@ -65,8 +75,13 @@ function fill_shows() {
 //fills in the movies section
 function fill_movies() {
   "use strict";
-  shuffle_array(window[moviesArray]);
   
+  //only shuffles moviesArray if called from home page or refresh button
+  if(localStorage.getItem("previous_page") == "home"){
+    shuffle_array(window[moviesArray]);
+  }
+  
+  //fills the Movies section of explore page
   document.getElementById("movies_thumbnail1").src = window[moviesArray][0].picture;
   document.getElementById("movies_thumbnail2").src = window[moviesArray][1].picture;
   document.getElementById("movies_thumbnail3").src = window[moviesArray][2].picture;
