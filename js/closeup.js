@@ -3,6 +3,7 @@ var template = Handlebars.compile(source);
 var cat = JSON.parse(localStorage.getItem('cat'));
 var obj = localStorage.getItem('img');
 var parentDiv = $("#display-result");
+var ytprefix = "https://www.youtube.com/embed/";
 
 function newPage() {
   for( var i = 0; i < cat.length; i++ ) {
