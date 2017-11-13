@@ -117,8 +117,6 @@
         Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
         return;
       }
-
-
     });
   });
 
@@ -140,11 +138,20 @@
     const password = login_password.value;
     //Attempts to sign in with entered email and password
     const auth = firebase.auth();
-    auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
+    try {
+      auth.createUserWithEmailAndPassword(email, password).then(function(response) {
+        console.log(response.uid);
+        firebase.database().ref("users/"+response.uid).set({
+          email: user.email,
+          displayName: user.displayname
+        });
+      });
+    }
+    catch (e) {
       var errorCode = error.code;
       var errorMessage = error.message;
       alert(errorMessage);
-    });
+    }
   });
 
   //Listener that activates when a user is logged in or out

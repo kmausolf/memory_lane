@@ -26,12 +26,6 @@ body {
   font-family: 'Arimo', sans-serif;
 }
 
-.nav img{
-  width: 28px;
-  height: 28px;
-  border: 0;
-}
-
 /********** login **********/
 
 #login {
