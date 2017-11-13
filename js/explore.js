@@ -1,7 +1,6 @@
 /*jslint devel: true */
 
-//Fisher-Yates shuffle to shuffle an array
-//https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+/****************************** Setup ******************************/
 
 //calls function upon page load
 $(document).ready(function(){
@@ -11,7 +10,15 @@ $(document).ready(function(){
   fill_movies();
 });
 
-//shuffles an array
+//declares variables to retrieve the correct data from the js data file
+var musicArray = 'music' + localStorage.selected_year;
+var showsArray = 'shows' + localStorage.selected_year;
+var moviesArray = 'movies' + localStorage.selected_year;
+
+/****************************** Helper Functions ******************************/
+
+//Fisher-Yates shuffle to shuffle an array
+//https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffle_array(array, string) {
   "use strict";
   var currentIndex = array.length, temporaryValue, randomIndex;
@@ -33,10 +40,7 @@ function set_prev() {
   localStorage.setItem("previous_page", "explore");
 }
 
-//declares variables to retrieve the correct data from the js data file
-var musicArray = 'music' + localStorage.selected_year;
-var showsArray = 'shows' + localStorage.selected_year;
-var moviesArray = 'movies' + localStorage.selected_year;
+/****************************** Fills Content Sections ******************************/
 
 //filles in the news section
 function fill_news() {
@@ -101,6 +105,8 @@ function fill_movies() {
   document.getElementById("movies_thumbnail4").src = moviesArray[3].picture;
 }
 
+/****************************** Content On-Click ******************************/
+
 //functionality for when a thumbnail in a section is clicked
 function newPage(cat, img) {
   for( var i = 0; i < cat.length; i++ ) {
@@ -115,6 +121,7 @@ function newPage(cat, img) {
   parentDiv.append(html);
 }
 
+//functionality for when a thumbnail in a section is clicked
 function onCatClick(cat, img) {
     //variable for section+year (ex: movies1970)
     cat = cat + localStorage.selected_year;

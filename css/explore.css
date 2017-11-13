@@ -1,3 +1,5 @@
+/********** nav bar **********/
+
 .nav a{
   color: #7c645b;
   font-size: 28px;
@@ -16,8 +18,10 @@
   border: 0;
 }
 
+/********** body & jumbotron **********/
+
 body{
-  padding-top: 120px;
+  padding-top: 70px;
 }
 
 ul{
@@ -46,6 +50,8 @@ ul{
   font-size: 40px;
   font-family: 'Courgette', cursive;
 }
+
+/********** section containers **********/
 
 .panel > .panel-heading{
   background-image: none;
@@ -84,17 +90,7 @@ ul{
   background-color: #D8D3F1;
 }
 
-.thumbnail img{
-  max-height: 30%;
-  max-width: 30%;
-}
-
-img.resize {
-  width: 100px;
-  height: 100px; 
-}
-
-
+/********** section content **********/
 
 .content_wrapper {
   background-color: white;
@@ -124,7 +120,6 @@ img.resize {
   width:100%;
   object-fit:fill;
   border-radius: 50%;
-
   float:right;
   position:relative;
   top: 3vw;
