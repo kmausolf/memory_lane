@@ -55,9 +55,11 @@ body {
 
 .jumbotron{
   background-image:url('');
-  min-height: 900px;
+  /*min-height: 900px;*/
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: white;
 }
 
 .navbar-default {
