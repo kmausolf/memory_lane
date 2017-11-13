@@ -1,5 +1,5 @@
 //closure for javascript
-(function(){
+(function () {
   //create module
   //define module
   var app = angular.module('selecting', []);
@@ -10,19 +10,19 @@
       thousands: 1,
       hundreds: 9,
       tens: 7,
-      ones: 0,
+      ones: 0
     }
-  ]
+  ];
 
   //define controller
   //capitalcase always!
-  app.controller('CountController', function(){
+  app.controller('CountController', function () {
 
-    this.increaseCount = function(place) {
-      if( year[0][place] < 9 ){
+    this.increaseCount = function (place) {
+      if (year[0][place] < 9) {
         year[0][place] += 1;
       }//end if
-      else{
+      else {
         year[0][place] = 0;
       }//end else
 
@@ -64,12 +64,12 @@
   //Tutorial: https://www.youtube.com/watch?v=-OKrloDzGpU
 
   //Initialize Firebase
-  const config = {
+  config = {
     apiKey: "AIzaSyABzPj3JJjsth_x7iEEeus_diIj_Hx3ajg",
     authDomain: "cse-170.firebaseapp.com",
     databaseURL: "https://cse-170.firebaseio.com",
     projectId: "cse-170",
-    storageBucket: "cse-170.appspot.com",
+    storageBucket: "cse-170.appspot.com"
   };
   firebase.initializeApp(config);
 
@@ -81,20 +81,57 @@
   const signup_button = document.getElementById('signup_button');
 
   //Adds login event
+  /*
   login_button.addEventListener('click', e => {
     //Get email and password
     const email = login_email.value;
     const password = login_password.value;
     //Attempts to sign in with entered email and password
     const auth = firebase.auth();
+    try {
+      auth.signInWithEmailAndPassword(email, password);
+    }
+    catch (e) {
+      alert(e);
+      alert('login failed');
+    }
+    /*
     const promise = auth.signInWithEmailAndPassword(email, password);
     //If signin fails, logs error message to console
     promise.catch(e => console.log(e.message));
+    * /
   });
-  
+  */
+  login_button.addEventListener('click', e => {
+    //Get email and password
+    const email = login_email.value;
+    const password = login_password.value;
+    //Attempts to sign in with entered email and password
+    auth = firebase.auth();
+    auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
+      if (task.IsCanceled) {
+        Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
+        return;
+      }
+      if (task.IsFaulted) {
+        Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+        return;
+      }
+
+
+    });
+  });
+
+
   //Adds logout event
   logout_button.addEventListener('click', e => {
-    firebase.auth.signOut();
+    try {
+      firebase.auth().signOut();
+    }
+    catch (e) {
+      alert(e);
+      alert('logout failed');
+    }
   });
 
   //Adds signup Event
@@ -103,26 +140,31 @@
     const password = login_password.value;
     //Attempts to sign in with entered email and password
     const auth = firebase.auth();
-    const promise = auth.signInWithEmailAndPassword(email, password);
-    //If signin fails, logs error message to console
-    promise.catch(e => console.log(e.message));
+    auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert(errorMessage);
+    });
   });
-  
-  //Add a realtime listener
+
+  //Listener that activates when a user is logged in or out
   firebase.auth().onAuthStateChanged(firebaseUser => {
-    //logs the user to the console if the user exists
+    //shows appropriate buttons for logged-in users
     if(firebaseUser) {
-      console.log(firebaseUser);
-      //shows the logout button if the user is already logged in
+      /*alert('Current User: ' + firebaseUser.getEmail());*/
+      email_div.classList.add('hide');
+      password_div.classList.add('hide');
       logout_button.classList.remove('hide');
+      login_button.classList.add('hide');
+      signup_button.classList.add('hide');
     }
-    //else logs a message if the user was not logged in
+    //shows appropriate buttons for logged-out users
     else {
-      console.log('user not logged in');
+      console.log('user is not logged in');
       //hides the logout button if the user isn't logged in
       logout_button.classList.add('hide');
     }
   });
-
-
 })();
+
+/*firebase.auth().currentUser.reauthenticateWithCredential(firebase.auth.EmailAuthProvider.credential(firebase.auth().currentUser.email, providedPassword)*/
