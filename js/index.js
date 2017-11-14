@@ -82,54 +82,6 @@
   const signup_button = document.getElementById('signup_button');
 
   //Adds login event
-  /*
-  login_button.addEventListener('click', e => {
-    //Get email and password
-    const email = login_email.value;
-    const password = login_password.value;
-    //Attempts to sign in with entered email and password
-    const auth = firebase.auth();
-    try {
-      auth.signInWithEmailAndPassword(email, password);
-    }
-    catch (e) {
-      alert(e);
-      alert('login failed');
-    }
-    /*
-    const promise = auth.signInWithEmailAndPassword(email, password);
-    //If signin fails, logs error message to console
-    promise.catch(e => console.log(e.message));
-    * /
-  });
-  */
-  /*
-  login_button.addEventListener('click', e => {
-    //Get email and password
-    const email = login_email.value;
-    const password = login_password.value;
-    //Attempts to sign in with entered email and password
-    auth = firebase.auth();
-    auth.signInWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
-      if (task.IsCanceled) {
-        Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
-        console.log('1');
-        return;
-      }
-      else if (task.IsFaulted) {
-        Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
-        console.log('2');
-        return;
-      }
-      else if (task.isSuccessful()) {
-        console.log('the task was successful');
-      }
-      else {
-        console.log('some other error occurred'); 
-      }
-    });
-  });
-  */
   login_button.addEventListener('click', e => {
     //Get email and password
     const email = login_email.value;
@@ -199,5 +151,3 @@
     }
   });
 })();
-
-/*firebase.auth().currentUser.reauthenticateWithCredential(firebase.auth.EmailAuthProvider.credential(firebase.auth().currentUser.email, providedPassword)*/
