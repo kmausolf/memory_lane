@@ -51,6 +51,11 @@ function fill_news() {
 function fill_music() {
   "use strict";
   
+  //if localStorage has no data for this section, populates localStorage
+  if(!localStorage.getItem('musicArray')){
+    localStorage.setItem('musicArray', JSON.stringify(window[musicArray]));
+  }
+  
   //uses data from localStorage instead of the js data file
   musicArray = JSON.parse(window.localStorage.getItem("musicArray"));
   
@@ -69,6 +74,11 @@ function fill_music() {
 //fills in the shows section
 function fill_shows() {
   "use strict";
+  
+  //if localStorage has no data for this section, populates localStorage
+  if(!localStorage.getItem('showsArray')){
+    localStorage.setItem('showsArray', JSON.stringify(window[showsArray]));
+  }
   
   //uses data from localStorage instead of the js data file
   showsArray = JSON.parse(window.localStorage.getItem("showsArray"));
@@ -89,6 +99,11 @@ function fill_shows() {
 //fills in the movies section
 function fill_movies() {
   "use strict";
+  
+  //if localStorage has no data for this section, populates localStorage
+  if(!localStorage.getItem('moviesArray')){
+    localStorage.setItem('moviesArray', JSON.stringify(window[moviesArray]));
+  }
   
   //uses data from localStorage instead of the js data file
   moviesArray = JSON.parse(window.localStorage.getItem("moviesArray"));
