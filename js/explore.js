@@ -4,6 +4,7 @@
 
 //calls function upon page load
 $(document).ready(function(){
+  localStorage.clear();
   fill_news();
   fill_music();
   fill_shows();
