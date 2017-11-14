@@ -4,10 +4,9 @@
 
 //calls function upon page load
 $(document).ready(function(){
-  fill_news();
-  fill_music();
-  fill_shows();
-  fill_movies();
+  fill_section('music');
+  fill_section('shows');
+  fill_section('movies');
 });
 
 //declares variables to retrieve the correct data from the js data file
@@ -36,17 +35,73 @@ function shuffle_array(array, string) {
   localStorage.setItem(string, JSON.stringify(array));
 }
 
+//helper function for refresh button
 function set_prev() {
   localStorage.setItem("previous_page", "explore");
 }
 
 /****************************** Fills Content Sections ******************************/
 
-//filles in the news section
-function fill_news() {
+//fills in the section of the explore page corresponding to the string parameter
+function fill_section(string) {
+  "use strict";
+  
+  //setup variables
+  var arrayName = string + 'Array';
+  var currArray = localStorage.getItem(arrayName);
+  
+  //if the data for the string parameter is not in localStorage,
+  if(currArray == null || currArray == 'undefined'){
+    //gets json object from js file and stores it in localStorage
+    console.log('adding ' + arrayName + ' to localStorage...');
+    localStorage.setItem(arrayName, JSON.stringify(window[window[arrayName]]));
+  }
+  
+  //uses data from localStorage instead of the js data file
+  currArray = JSON.parse(window.localStorage.getItem(arrayName));
 
+  //if function was called from home page GO button or explore page refresh button
+  if(localStorage.getItem("previous_page") != "closeup"){
+    //shuffles the array and stores it in localStorage
+    shuffle_array(currArray, arrayName);
+  }
+  
+  //fills the section of explore page specified by string parameter
+  document.getElementById(string + "_thumbnail1").src = currArray[0].picture;
+  document.getElementById(string + "_thumbnail2").src = currArray[1].picture;
+  document.getElementById(string + "_thumbnail3").src = currArray[2].picture;
+  document.getElementById(string + "_thumbnail4").src = currArray[3].picture;
 }
 
+/****************************** Content On-Click ******************************/
+
+//functionality for when a thumbnail in a section is clicked
+function newPage(cat, img) {
+  for( var i = 0; i < cat.length; i++ ) {
+    if( cat[i][picture] == img ) {
+      var temp = object[0];
+      break;
+    }
+  }
+  //fill in template from closeup.html
+  var html = template(temp);
+  console.log(html);
+  parentDiv.append(html);
+}
+
+//functionality for when a thumbnail in a section is clicked
+function onCatClick(cat, img) {
+    //variable for section+year (ex: movies1970)
+    cat = cat + localStorage.selected_year;
+    //set up data for closeup page load
+    localStorage.setItem('cat', JSON.stringify(window[cat]));
+    localStorage.setItem('img', img);
+    location.assign("closeup.html");
+};
+
+/****************************** OLD CODE ******************************/
+
+/*
 //fills in music section
 function fill_music() {
   "use strict";
@@ -57,13 +112,6 @@ function fill_music() {
     console.log('adding musicArray to localStorage...');
     localStorage.setItem('musicArray', JSON.stringify(window[musicArray]));
   }
-  
-  /*
-  console.log('localStorage.selected_year: ' + localStorage.selectedYear);
-  console.log('musicArray: ' + musicArray);
-  console.log('window[musicArray]: ' + window[musicArray]);
-  console.log('localStorage.getItem: ' + localStorage.getItem('musicArray'));
-  */
   
   //uses data from localStorage instead of the js data file
   musicArray = JSON.parse(window.localStorage.getItem('musicArray'));
@@ -132,29 +180,4 @@ function fill_movies() {
   document.getElementById("movies_thumbnail3").src = moviesArray[2].picture;
   document.getElementById("movies_thumbnail4").src = moviesArray[3].picture;
 }
-
-/****************************** Content On-Click ******************************/
-
-//functionality for when a thumbnail in a section is clicked
-function newPage(cat, img) {
-  for( var i = 0; i < cat.length; i++ ) {
-    if( cat[i][picture] == img ) {
-      var temp = object[0];
-      break;
-    }
-  }
-  //fill in template from closeup.html
-  var html = template(temp);
-  console.log(html);
-  parentDiv.append(html);
-}
-
-//functionality for when a thumbnail in a section is clicked
-function onCatClick(cat, img) {
-    //variable for section+year (ex: movies1970)
-    cat = cat + localStorage.selected_year;
-    //set up data for closeup page load
-    localStorage.setItem('cat', JSON.stringify(window[cat]));
-    localStorage.setItem('img', img);
-    location.assign("closeup.html");
-};
+*/
