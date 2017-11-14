@@ -146,7 +146,7 @@
     }
     //shows appropriate buttons for logged-out users
     else {
-      console.log('user has logged out');
+      console.log('user is logged out');
       //hides logout button
       logout_button.classList.add('hide');
       //adds appropriate buttons

@@ -52,12 +52,21 @@ function fill_music() {
   "use strict";
   
   //if localStorage has no data for this section, populates localStorage
-  if(!localStorage.getItem('musicArray')){
+  var currArray = localStorage.getItem('musicArray');
+  if(currArray == null || currArray == 'undefined'){
+    console.log('adding musicArray to localStorage...');
     localStorage.setItem('musicArray', JSON.stringify(window[musicArray]));
   }
   
+  /*
+  console.log('localStorage.selected_year: ' + localStorage.selectedYear);
+  console.log('musicArray: ' + musicArray);
+  console.log('window[musicArray]: ' + window[musicArray]);
+  console.log('localStorage.getItem: ' + localStorage.getItem('musicArray'));
+  */
+  
   //uses data from localStorage instead of the js data file
-  musicArray = JSON.parse(window.localStorage.getItem("musicArray"));
+  musicArray = JSON.parse(window.localStorage.getItem('musicArray'));
   
   //only shuffles musicArray if called from home page or refresh button
   if(localStorage.getItem("previous_page") != "closeup"){
@@ -76,7 +85,9 @@ function fill_shows() {
   "use strict";
   
   //if localStorage has no data for this section, populates localStorage
-  if(!localStorage.getItem('showsArray')){
+  var currArray = localStorage.getItem('showsArray');
+  if(currArray == null || currArray == 'undefined'){
+    console.log('adding showsArray to localStorage...');
     localStorage.setItem('showsArray', JSON.stringify(window[showsArray]));
   }
   
@@ -101,7 +112,9 @@ function fill_movies() {
   "use strict";
   
   //if localStorage has no data for this section, populates localStorage
-  if(!localStorage.getItem('moviesArray')){
+  var currArray = localStorage.getItem('moviesArray');
+  if(currArray == null || currArray == 'undefined'){
+    console.log('adding moviesArray to localStorage...');
     localStorage.setItem('moviesArray', JSON.stringify(window[moviesArray]));
   }
   
