@@ -9,11 +9,6 @@ $(document).ready(function(){
   fill_section('movies');
 });
 
-//declares variables to retrieve the correct data from the js data file
-var musicArray = 'music' + localStorage.selected_year;
-var showsArray = 'shows' + localStorage.selected_year;
-var moviesArray = 'movies' + localStorage.selected_year;
-
 /****************************** Helper Functions ******************************/
 
 //Fisher-Yates shuffle to shuffle an array
@@ -45,7 +40,7 @@ function set_prev() {
 //fills in the section of the explore page corresponding to the string parameter
 function fill_section(string) {
   "use strict";
-  
+
   //setup variables
   var arrayName = string + 'Array';
   var currArray = localStorage.getItem(arrayName);
@@ -53,8 +48,9 @@ function fill_section(string) {
   //if the data for the string parameter is not in localStorage,
   if(currArray == null || currArray == 'undefined'){
     //gets json object from js file and stores it in localStorage
-    console.log('adding ' + arrayName + ' to localStorage...');
-    localStorage.setItem(arrayName, JSON.stringify(window[window[arrayName]]));
+    var fileArray = string + localStorage.selected_year;
+    console.log('adding ' + fileArray + ' to localStorage...');
+    localStorage.setItem(arrayName, JSON.stringify(window[fileArray]));
   }
   
   //uses data from localStorage instead of the js data file
@@ -102,6 +98,11 @@ function onCatClick(cat, img) {
 /****************************** OLD CODE ******************************/
 
 /*
+//declares variables to retrieve the correct data from the js data file
+var musicArray = 'music' + localStorage.selected_year;
+var showsArray = 'shows' + localStorage.selected_year;
+var moviesArray = 'movies' + localStorage.selected_year;
+
 //fills in music section
 function fill_music() {
   "use strict";
