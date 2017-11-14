@@ -65,6 +65,7 @@
 
   //Initialize Firebase
   config = {
+    //NOTE: public apiKey is a security issue
     apiKey: "AIzaSyABzPj3JJjsth_x7iEEeus_diIj_Hx3ajg",
     authDomain: "cse-170.firebaseapp.com",
     databaseURL: "https://cse-170.firebaseio.com",
@@ -81,42 +82,17 @@
   const signup_button = document.getElementById('signup_button');
 
   //Adds login event
-  /*
   login_button.addEventListener('click', e => {
     //Get email and password
     const email = login_email.value;
     const password = login_password.value;
     //Attempts to sign in with entered email and password
-    const auth = firebase.auth();
-    try {
-      auth.signInWithEmailAndPassword(email, password);
-    }
-    catch (e) {
-      alert(e);
-      alert('login failed');
-    }
-    /*
-    const promise = auth.signInWithEmailAndPassword(email, password);
-    //If signin fails, logs error message to console
-    promise.catch(e => console.log(e.message));
-    * /
-  });
-  */
-  login_button.addEventListener('click', e => {
-    //Get email and password
-    const email = login_email.value;
-    const password = login_password.value;
-    //Attempts to sign in with entered email and password
-    auth = firebase.auth();
-    auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
-      if (task.IsCanceled) {
-        Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
-        return;
-      }
-      if (task.IsFaulted) {
-        Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
-        return;
-      }
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error)
+    {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log('error code: ' + errorCode);
+      console.log('error message: ' + errorMessage);
     });
   });
 
@@ -127,7 +103,7 @@
       firebase.auth().signOut();
     }
     catch (e) {
-      alert(e);
+      console.log(e);
       alert('logout failed');
     }
   });
@@ -140,6 +116,7 @@
     const auth = firebase.auth();
     try {
       auth.createUserWithEmailAndPassword(email, password).then(function(response) {
+        //gets the user id in firebase
         console.log(response.uid);
         firebase.database().ref("users/"+response.uid).set({
           email: user.email,
@@ -147,10 +124,10 @@
         });
       });
     }
-    catch (e) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      alert(errorMessage);
+    catch (err) {
+      var errorCode = err.code;
+      var errorMessage = err.message;
+      console.log(errorMessage);
     }
   });
 
@@ -158,6 +135,7 @@
   firebase.auth().onAuthStateChanged(firebaseUser => {
     //shows appropriate buttons for logged-in users
     if(firebaseUser) {
+      console.log('user has logged in');
       /*alert('Current User: ' + firebaseUser.getEmail());*/
       email_div.classList.add('hide');
       password_div.classList.add('hide');
@@ -167,11 +145,9 @@
     }
     //shows appropriate buttons for logged-out users
     else {
-      console.log('user is not logged in');
+      console.log('user has logged out');
       //hides the logout button if the user isn't logged in
       logout_button.classList.add('hide');
     }
   });
 })();
-
-/*firebase.auth().currentUser.reauthenticateWithCredential(firebase.auth.EmailAuthProvider.credential(firebase.auth().currentUser.email, providedPassword)*/
