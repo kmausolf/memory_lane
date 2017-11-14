@@ -136,18 +136,24 @@
     //shows appropriate buttons for logged-in users
     if(firebaseUser) {
       console.log('user has logged in');
-      /*alert('Current User: ' + firebaseUser.getEmail());*/
+      //removes appropriate buttons
       email_div.classList.add('hide');
       password_div.classList.add('hide');
-      logout_button.classList.remove('hide');
       login_button.classList.add('hide');
       signup_button.classList.add('hide');
+      //adds logout button
+      logout_button.classList.remove('hide');
     }
     //shows appropriate buttons for logged-out users
     else {
       console.log('user has logged out');
-      //hides the logout button if the user isn't logged in
+      //hides logout button
       logout_button.classList.add('hide');
+      //adds appropriate buttons
+      email_div.classList.remove('hide');
+      password_div.classList.remove('hide');
+      login_button.classList.remove('hide');
+      signup_button.classList.remove('hide');
     }
   });
 })();
