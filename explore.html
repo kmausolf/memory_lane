@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/explore.css">
   </head>
 
-  <body>
+  <body ng-app="explore">
 
     <!-- Nav Bar -------------------------------------------------->
     <nav class="nav navbar-default navbar-fixed-top">
@@ -23,7 +23,7 @@
         </ul>
         <ul class="text-center">
           <script>
-            document.write("<li><a href=\"index.html\" style=\"font-size: 8vw\">" + localStorage.selected_year + "</a></li>");
+            document.write("<li><a href=\"index.html\" style=\"font-size: 3vw\">" + localStorage.selected_year + "</a></li>");
           </script>
         </ul>
       </div>
@@ -31,10 +31,10 @@
     <!-- End Nav Bar -------------------------------------------------->
 
     <!-- Recommender Container -------------------------------------------------->
-    <div class="container">
+    <div class="container" ng-controller="DivHider">
 
       <!-- Music Recommender -------------------------------------------------->
-      <div class="panel panel-default">
+      <div class="panel panel-default" ng-show="checkSettings('music')">
         <div class="panel-heading", id="music-rec">
           <h2>Music</h2>
           <!-- We can put various options up here --->
@@ -75,8 +75,8 @@
       </div>
       <!-- End Music Recommender -------------------------------------------------->
 
-      <!-- Shows Recommender -------------------------------------------------->      
-      <div class="panel panel-default">
+      <!-- Shows Recommender -------------------------------------------------->
+      <div class="panel panel-default" ng-show="checkSettings('shows')">
         <div class="panel-heading", id="shows-rec">
           <h2>Shows</h2>
           <!-- We can put various options up here --->
@@ -118,7 +118,7 @@
       <!-- End Shows Recommender -------------------------------------------------->
 
       <!-- Movie Recommender -------------------------------------------------->
-      <div class="panel panel-default">
+      <div class="panel panel-default" ng-show="checkSettings('movies')">
         <div class="panel-heading", id="movie-rec">
           <h2>Movies</h2>
           <!-- We can put various options up here --->
@@ -161,7 +161,7 @@
 
 
       <!-- News Recommender -------------------------------------------------->
-      <div class="panel panel-default">
+      <div class="panel panel-default" ng-show="false">
         <div class="panel-heading", id="news-rec">
           <h2>News</h2>
           <!-- We can put various options up here --->
@@ -206,10 +206,12 @@
     <!-- End Recommender Container -------------------------------------------------->
 
     <!--javascript-->
+    <script type="text/javascript" src="js/angular.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="js/displays.js"></script>
     <script src="js/explore.js"></script>
+    <script src="js/explore_angular.js"></script>
 
   </body>
 </html>

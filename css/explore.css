@@ -2,7 +2,7 @@
 
 .nav a{
   color: #7c645b;
-  font-size: 28px;
+  font-size: 14px;
   font-weight: bold;
   padding: 14px 10px;
   font-family: 'Courgette', sans-serif;
@@ -13,15 +13,15 @@
 }
 
 .nav img{
-  width: 5vw;
-  height: 5vw;
+  width: 4vw;
+  height: 4vw;
   border: 0;
 }
 
 /********** body & jumbotron **********/
 
 body{
-  padding-top: 70px;
+  padding-top: 100px;
 }
 
 ul{

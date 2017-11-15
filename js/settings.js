@@ -3,9 +3,26 @@
   var app = angular.module('settings', []);
 
   app.controller("ButtonCtrl", function($scope){
-    $scope.musicActive = true;
-    $scope.moviesActive = true;
-    $scope.showsActive = true;
+    if(localStorage.getItem("show_music") === null){
+      $scope.musicActive = true;
+    }//end if
+    else{
+      $scope.musicActive = localStorage.getItem("show_music");
+    }//end else
+
+    if(localStorage.getItem("show_movies") === null){
+      $scope.moviesActive = true;
+    }//end if
+    else{
+      $scope.moviesActive = localStorage.getItem("show_movies");
+    }//end else
+
+    if(localStorage.getItem("show_shows") === null){
+      $scope.showsActive = true;
+    }//end if
+    else{
+      $scope.showsActive = localStorage.getItem("show_shows");
+    }//end else
 
     $scope.toggleActive = function(cat){
       if(cat == "music"){
