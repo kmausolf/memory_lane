@@ -44,7 +44,7 @@ function fill_section(string) {
   //setup variables
   var arrayName = string + 'Array';
   var currArray = localStorage.getItem(arrayName);
-  
+
   //if the data for the string parameter is not in localStorage,
   if(currArray == null || currArray == 'undefined'){
     //gets json object from js file and stores it in localStorage
@@ -52,7 +52,7 @@ function fill_section(string) {
     console.log('adding ' + fileArray + ' to localStorage...');
     localStorage.setItem(arrayName, JSON.stringify(window[fileArray]));
   }
-  
+
   //uses data from localStorage instead of the js data file
   currArray = JSON.parse(window.localStorage.getItem(arrayName));
 
@@ -61,7 +61,7 @@ function fill_section(string) {
     //shuffles the array and stores it in localStorage
     shuffle_array(currArray, arrayName);
   }
-  
+
   //fills the section of explore page specified by string parameter
   document.getElementById(string + "_thumbnail1").src = currArray[0].picture;
   document.getElementById(string + "_thumbnail2").src = currArray[1].picture;
@@ -106,22 +106,22 @@ var moviesArray = 'movies' + localStorage.selected_year;
 //fills in music section
 function fill_music() {
   "use strict";
-  
+
   //if localStorage has no data for this section, populates localStorage
   var currArray = localStorage.getItem('musicArray');
   if(currArray == null || currArray == 'undefined'){
     console.log('adding musicArray to localStorage...');
     localStorage.setItem('musicArray', JSON.stringify(window[musicArray]));
   }
-  
+
   //uses data from localStorage instead of the js data file
   musicArray = JSON.parse(window.localStorage.getItem('musicArray'));
-  
+
   //only shuffles musicArray if called from home page or refresh button
   if(localStorage.getItem("previous_page") != "closeup"){
     shuffle_array(musicArray, "musicArray");
   }
-  
+
   //fills the Music section of explore page
   document.getElementById("music_thumbnail1").src = musicArray[0].picture;
   document.getElementById("music_thumbnail2").src = musicArray[1].picture;
@@ -132,17 +132,17 @@ function fill_music() {
 //fills in the shows section
 function fill_shows() {
   "use strict";
-  
+
   //if localStorage has no data for this section, populates localStorage
   var currArray = localStorage.getItem('showsArray');
   if(currArray == null || currArray == 'undefined'){
     console.log('adding showsArray to localStorage...');
     localStorage.setItem('showsArray', JSON.stringify(window[showsArray]));
   }
-  
+
   //uses data from localStorage instead of the js data file
   showsArray = JSON.parse(window.localStorage.getItem("showsArray"));
-  
+
   //only shuffles showsArray if called from home page or refresh button
   if(localStorage.getItem("previous_page") != "closeup"){
     shuffle_array(showsArray, "showsArray");
@@ -159,23 +159,23 @@ function fill_shows() {
 //fills in the movies section
 function fill_movies() {
   "use strict";
-  
+
   //if localStorage has no data for this section, populates localStorage
   var currArray = localStorage.getItem('moviesArray');
   if(currArray == null || currArray == 'undefined'){
     console.log('adding moviesArray to localStorage...');
     localStorage.setItem('moviesArray', JSON.stringify(window[moviesArray]));
   }
-  
+
   //uses data from localStorage instead of the js data file
   moviesArray = JSON.parse(window.localStorage.getItem("moviesArray"));
-  
+
   //only shuffles moviesArray if called from home page or refresh button
   if(localStorage.getItem("previous_page") != "closeup"){
     shuffle_array(moviesArray, "moviesArray");
   }
-  
-  //fills the Movies section of explore page  
+
+  //fills the Movies section of explore page
   document.getElementById("movies_thumbnail1").src = moviesArray[0].picture;
   document.getElementById("movies_thumbnail2").src = moviesArray[1].picture;
   document.getElementById("movies_thumbnail3").src = moviesArray[2].picture;
