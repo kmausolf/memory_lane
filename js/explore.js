@@ -45,8 +45,10 @@ function fill_section(string) {
   var arrayName = string + 'Array';
   var currArray = localStorage.getItem(arrayName);
 
-  //if the data for the string parameter is not in localStorage,
-  if(currArray == null || currArray == 'undefined'){
+  //if coming from home page or 
+  //if if the data for the string parameter is not in localStorage,
+  if(localStorage.getItem('previous_page') == 'home' || 
+     currArray == null || currArray == 'undefined'){
     //gets json object from js file and stores it in localStorage
     var fileArray = string + localStorage.selected_year;
     console.log('adding ' + fileArray + ' to localStorage...');
@@ -87,12 +89,12 @@ function newPage(cat, img) {
 
 //functionality for when a thumbnail in a section is clicked
 function onCatClick(cat, img) {
-    //variable for section+year (ex: movies1970)
-    cat = cat + localStorage.selected_year;
-    //set up data for closeup page load
-    localStorage.setItem('cat', JSON.stringify(window[cat]));
-    localStorage.setItem('img', img);
-    location.assign("closeup.html");
+  //variable for section+year (ex: movies1970)
+  cat = cat + localStorage.selected_year;
+  //set up data for closeup page load
+  localStorage.setItem('cat', JSON.stringify(window[cat]));
+  localStorage.setItem('img', img);
+  location.assign("closeup.html");
 };
 
 /****************************** OLD CODE ******************************/
@@ -103,8 +105,8 @@ var musicArray = 'music' + localStorage.selected_year;
 var showsArray = 'shows' + localStorage.selected_year;
 var moviesArray = 'movies' + localStorage.selected_year;
 
-//fills in music section
-function fill_music() {
+  //fills in music section
+  function fill_music() {
   "use strict";
 
   //if localStorage has no data for this section, populates localStorage
@@ -129,8 +131,8 @@ function fill_music() {
   document.getElementById("music_thumbnail4").src = musicArray[3].picture;
 }
 
-//fills in the shows section
-function fill_shows() {
+  //fills in the shows section
+  function fill_shows() {
   "use strict";
 
   //if localStorage has no data for this section, populates localStorage
@@ -156,8 +158,8 @@ function fill_shows() {
 
 }
 
-//fills in the movies section
-function fill_movies() {
+  //fills in the movies section
+  function fill_movies() {
   "use strict";
 
   //if localStorage has no data for this section, populates localStorage
