@@ -109,7 +109,7 @@ function newPage(cat, img) {
 //functionality for when a thumbnail in a section is clicked
 function onCatClick(cat, img) {
   //variable for section+year (ex: movies1970)
-  cat = cat + localStorage.selected_year;
+  cat = cat + localStorage.explore_year;
   //set up data for closeup page load
   localStorage.setItem('cat', JSON.stringify(window[cat]));
   localStorage.setItem('img', img);
