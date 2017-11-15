@@ -31,17 +31,25 @@
     <!-- Jumbotron ------------------------>
 
     <div class="jumbotron">
-      <div class="container">
+      <div class="container" ng-app="settings" ng-controller="ButtonCtrl">
         <center>
-          <h1>Settings Coming soon!</h1>
-        </center>
+          <h1>I want to remember...</h1>
+          <div class="btn-group btn-group-lg">
+            <button type="button" class="btn" ng-class="{true: 'btn-success', false: 'btn-default'}[musicActive]" ng-click="toggleActive('music')">Music</button>
+            <button type="button" class="btn" ng-class="{true: 'btn-success', false: 'btn-default'}[moviesActive]" ng-click="toggleActive('movies')">Movies</button>
+            <button type="button" class="btn" ng-class="{true: 'btn-success', false: 'btn-default'}[showsActive]" ng-click="toggleActive('shows')">Shows</button>
+          </center>
+        </div>
       </div>
     </div>
 
     <!-- End of Jumbotron ------------------------>
 
-  </body>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/settings.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
 
 </html>
