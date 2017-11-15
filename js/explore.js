@@ -4,6 +4,7 @@
 
 //calls function upon page load
 $(document).ready(function(){
+  determineYear();
   fill_section('music');
   fill_section('shows');
   fill_section('movies');
@@ -35,12 +36,30 @@ function set_prev() {
   localStorage.setItem("previous_page", "explore");
 }
 
+//temporary function for default year values
+function determineYear() {
+  var temp = localStorage.selected_year;
+  var year = parseInt(temp);
+  if (year > 1969){
+    localStorage.setItem('explore_year', 1970);
+  }
+  else if (year < 1950) {
+    localStorage.setItem('explore_year', 1970);
+  }
+  else if (year > 1959) {
+    localStorage.setItem('explore_year', 1960);
+  }
+  else {
+    localStorage.setItem('explore_year', 1950);
+  } 
+  console.log('year being used: ' + localStorage.explore_year);
+}
+
 /****************************** Fills Content Sections ******************************/
 
 //fills in the section of the explore page corresponding to the string parameter
 function fill_section(string) {
   "use strict";
-
   //setup variables
   var arrayName = string + 'Array';
   var currArray = localStorage.getItem(arrayName);
@@ -50,7 +69,7 @@ function fill_section(string) {
   if(localStorage.getItem('previous_page') == 'home' || 
      currArray == null || currArray == 'undefined'){
     //gets json object from js file and stores it in localStorage
-    var fileArray = string + localStorage.selected_year;
+    var fileArray = string + localStorage.explore_year;
     console.log('adding ' + fileArray + ' to localStorage...');
     localStorage.setItem(arrayName, JSON.stringify(window[fileArray]));
   }
