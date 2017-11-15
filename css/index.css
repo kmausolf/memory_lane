@@ -1,9 +1,11 @@
 body {
   padding-top: 60px;
+  background-image: "images/background.jpg";
 }
 @media (max-width: 979px) {
   body {
     padding-top: 0px;
+
   }
 }
 
