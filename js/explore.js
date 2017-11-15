@@ -43,9 +43,6 @@ function determineYear() {
   if (year > 1969){
     localStorage.setItem('explore_year', 1970);
   }
-  else if (year < 1950) {
-    localStorage.setItem('explore_year', 1970);
-  }
   else if (year > 1959) {
     localStorage.setItem('explore_year', 1960);
   }
