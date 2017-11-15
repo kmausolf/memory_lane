@@ -18,7 +18,6 @@ function newPage() {
   parentDiv.append(html);
 }
 
-
 $(document).ready(function() {
   localStorage.setItem("previous_page", "closeup");
   //alert("set closeup");

@@ -14,30 +14,40 @@
   </head>
 
   <body>
-    <!-- Nav Bar ------------------------>
+    <!-- (Start) Nav Bar ------------------------>
     <nav class="nav navbar-default navbar-fixed-top">
       <div class="container">
- 
-        
-        
+        <ul class="text-center">
+          <script>
+            document.write("<li><a href=\"explore.html\" style=\"font-size: 8vw\">" + Back to Settings + "</a></li>");
+          </script>
+        </ul>
       </div>
     </nav>
-    <!-- End of Nav Bar ------------------------>
+    <!-- (End) Nav Bar ------------------------>
 
 
-    <!-- Jumbotron ------------------------>
+    <!-- (Start) Jumbotron ------------------------>
     <div class="jumbotron">
       <div class="container">
         <center ng-app="selecting">
-          <h1>Personal Memories</h1>
 
+          <h1>Personal Info</h1>
 
+          <!-- Test Image -->
+          <div class="content_box" id="testImageDiv">
+            <img id="testImage" class="content_thumbnail" src="images/Filler.jpg" onClick="testFunction('param')">
+          </div>
 
-
+          <!-- Test Button -->
+          <div class="content_box" id="testButtonDiv">
+            <button id="testButton" class="content_thumbnail" src="images/Filler.jpg" onClick="testFunction('param')">Test Button</button>
+          </div>
+          
         </center>
       </div>
     </div>
-    <!-- End of Jumbotron ------------------------>
+    <!-- (End) Jumbotron ------------------------>
 
     <!-- Javascript -->
     <script type="text/javascript" src="js/personal.js"></script>
