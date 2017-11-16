@@ -19,9 +19,12 @@
   app.controller('CountController', function () {
 
     this.increaseCount = function (place) {
-      if (year[0][place] < 9) {
+      if (year[0][place] < 9 && year[0]['thousands'] < 2 ) {
         year[0][place] += 1;
       }//end if
+      else if (place == 'thousands') {
+        year[0][place] = 1;
+      }//end else if
       else {
         year[0][place] = 0;
       }//end else
