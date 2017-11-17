@@ -73,6 +73,11 @@
     storageBucket: "cse-170.appspot.com"
   };
   firebase.initializeApp(config);
+  /*
+  //lets firebase be used elsewhere
+  var firebaseApp = firebase.initializeApp(config);
+  module.exports.FBApp = firebaseApp.database();
+  */
 
   //Get elements from html document
   const login_email = document.getElementById('login_email');
