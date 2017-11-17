@@ -1,10 +1,11 @@
 body {
   padding-top: 60px;
-  background-image: "images/background.jpg";
+  min-height: 100%;
 }
 @media (max-width: 979px) {
   body {
     padding-top: 0px;
+    min-height: 100%;
 
   }
 }
@@ -50,45 +51,66 @@ body {
 /********** year selection **********/
 
 .jumbotron{
-  background-image:url('');
   /*min-height: 900px;*/
-  min-height: 100vh;
+  min-height: 110vh;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: white;
+  background-color: rgba(255, 255, 255, .7);
 }
 
 .navbar-default {
   background-color: rgba(0,0,0,0);
 }
 
+#background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 110vh;
+  background-image: url("../images/background.jpg");
+  background-position: 0% 25%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+   -o-filter: blur(5px);
+   -ms-filter: blur(5px);
+   filter: blur(5px);
+   z-index: -1;
+}
+
 .jumbotron .container{
-  position: relative;
-  top: 100px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 50px;
+
 }
 
 .jumbotron h1 {
-  color: #fff;
-  text-shadow:
-  -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
-  font-size: 40px;
-  font-family: 'Courgette', cursive;
+  font-size: 65px;
+  font-family: 'Rouge Script', cursive;
 }
 
 #years {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  vertical-align: text-top;
   margin-top: 20px;
 }
 
-#set {
+.set {
   display: flex;
   flex-direction: column;
   align-content: center;
+}
+
+.set p {
+  font-family: "Rochester", cursive;
+  line-height: 100px;
 }
 
 .container button {
@@ -105,10 +127,6 @@ body {
   justify-content: center;
 }
 
-#set input {
-  height: 50px;
-  width: 50%;
-}
 
 .input-group p {
   font-size: 80px;
@@ -117,12 +135,14 @@ body {
 /********** GO Button **********/
 
 #submit {
-  background: radial-gradient(#31F8FB, #1542F9);
-  border-radius: 100%;
+  background: radial-gradient(#86c677, #427237);
+  border-color: rgba(0,0,0,0);
+  border-radius: 25%;
   font-size: 60px;
-  width: 120px;
-  height: 120px;
-  color: white;
+  width: 160px;
+  height: 90px;
+  color: black;
+  font-family: "Reem Kufi";
 }
 
 #submit a {
