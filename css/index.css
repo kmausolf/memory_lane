@@ -13,7 +13,7 @@ body {
 /********** nav bar **********/
 
 .nav {
-  z-index:1;
+  z-index:0;
 }
 
 .nav a{
@@ -34,6 +34,10 @@ body {
 #login {
   top: 65px;
   position: relative;
+  /*background-color: lightgray;*/
+  /*min-height: 220px;*/
+  /*max-height: 0px;*/
+  z-index: 1;
 }
 
 /*
@@ -86,7 +90,7 @@ body {
   left: 0;
   right: 0;
   top: 50px;
-
+  z-index: 0;
 }
 
 .jumbotron h1 {
