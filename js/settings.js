@@ -5,20 +5,22 @@ $(document).ready(function(){
   firebase.auth().onAuthStateChanged(firebaseUser => {
     //localStorage.clear();
     console.log('firebase.auth().onAuthStateChanged');
+    //currentUser is a variable from the file, personal.js
+    currentUser = firebaseUser;
     console.log('---');
-    getSetting('music_setting', firebaseUser);
-    getSetting('movies_setting', firebaseUser);
-    getSetting('shows_setting', firebaseUser);
-
+    /*
+    getSetting('music_setting');
+    getSetting('movies_setting');
+    getSetting('shows_setting');
+    */
   });
 });
 
-
 //function to get the specified setting of the user
-function getSetting(setting, user) {
+function getSetting(setting) {
   
   //If the user is logged in, pulls setting from database
-  if(user) {
+  if(currentUser) {
     //Gets promise of user settings data specified by "setting" param
     console.log('Getting ' + setting + ' setting from database.');
     var promise = getUserData('/settings', setting);
@@ -66,6 +68,17 @@ function getSetting(setting, user) {
   }
 }
 
+//(untested) function to set the specified setting for the user
+function setSetting(setting, value) {
+  //sets settings for logged-in users
+  if(currentUser) {
+    writeUserData('/settings', setting, value);
+  }
+  //sets settings for non-logged-in users
+  else {
+    localStorage.setItem(setting, value);
+  }
+}
 
 
 /****************************** Old Code ******************************/

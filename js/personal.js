@@ -7,6 +7,9 @@
 
 /****************************** Setup ******************************/
 
+//variable to store the current user (currently only used by settings.js)
+var currentUser;
+
 //calls functions on page load
 //$(document).ready(function(){
 
@@ -60,16 +63,29 @@ function initializeUserData() {
   });
 }
 
-//Uses the "path" param to find the "field" in firebase
-//and sets the value of that field to "value".
-//If changing field with uid as root, use '' as the path value.
+/*
+Description:
+  Updates data in the database
+@param "path":
+  The (string) path to get to the key you want to update.
+  (Uses "users/<uid>" as the root of the path.)
+  To specify keys/fields in settings, use path = "/settings"
+@param "field":
+  The (string) key/field that you want to update.
+  Example keys/field for "settings":
+    music_setting
+@param "value":
+  The new value of the key/field.
+  Example value for music_setting:
+    true
+@return: 
+  none
+Example use: writeUserData('/settings', 'music_setting', true);
+*/
 function writeUserData(path, field, value) {
-  //test function: write user data to firebase
-
-  //Declare variables
-  var user, uid;
-  //Initialize variables
-  user = firebase.auth().currentUser;
+  //Attempts to initialize user and get user's uid
+  var uid;
+  var user = firebase.auth().currentUser;
   if (user != null) {
     uid = user.uid;
   }
@@ -78,31 +94,41 @@ function writeUserData(path, field, value) {
     return;
   }
 
-  //writes to firebase
+  //Uses uid to update firebase
   console.log('Updating user ' + field + ' field to: ' + value)
   firebase.database().ref('users/' + uid + path).update({
     [field]: value
   });
 }
 
-//Returns a promise for the user data (specified by "field" param) 
-//based on the path (using the uid as the root of the path).
+/*
+Description:
+  Gets a PROMISE of the data from firebase
+@param "path":
+  The (string) path to get to the key specified by field param.
+  (Uses "users/<uid>" as the root of the path.)
+  To get keys/fields in settings, use path = "/settings"
+@param "field":
+  The (string) key/field that you want data from.
+  Example keys/field for "settings":
+    music_setting
+@return:
+  The value specified by path/field param combination
+Example Use: var promise = getUserData('/settings', 'music_setting');
+*/
 function getUserData(path, field) {
-
-  //Declare variables
-  var user, email, uid;
-  //Initialize user id
-  user = firebase.auth().currentUser;
+  //Attempts to initialize user and get user's uid
+  var uid;
+  var user = firebase.auth().currentUser;
   if (user == null) {
     console.log('User is null. Cannot get user data.');
     return;
   }
   var uid = user.uid;
-  //get firebase database reference to appropriate data in firebase
+  //Creates firebase database reference to appropriate data in firebase
   var ref = firebase.database().ref('/users/' + uid + path).child(field);
 
-  //Uses the reference to get the value of the appropriate element.
-  //Utilizes firebase promise to return a promise of the data
+  //Returns a promise of the data pointed to by firebase reference
   return ref.once('value').then(function(dataSnapshot) {
     console.log('getUserData returned: ' + dataSnapshot.val());
     return Promise.resolve(dataSnapshot.val());
