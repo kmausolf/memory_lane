@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Reem+Kufi|Rochester|Rouge+Script" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/closeup.css">
+    <link rel="stylesheet" href="css/lightbox.css">
 
     <!-- Style References end -->
   </head>
@@ -25,7 +26,7 @@
       </div>
     </nav>
     <!-- End Nav Bar -------------------------------------------------->
-    
+
 
     <!-- Jumbotron ------------------------>
 
@@ -33,26 +34,34 @@
       <div class="container">
         <script id="display-template" type="text/x-handlebars-template">
           <center>
-            
+
             <!-- identify type of the item displayed -->
             <h1>{{type}}</h1>
-            
+
             <!-- the title of the movie -->
             <h2>{{title}}</h2>
-            
+
             <!-- path to full size image -->
-            <div id="display-pic">
+            <!-- <div id="display-pic">
               <img src="{{picture}}"/>
+
+            </div>-->
+
+            <!-- Lightbox image container -->
+            <div class="container-fluid" id="lb-pic">
+              <a href="{{picture}}" rel="lightbox" title="">
+                <img src="{{picture}}" class="img-thumbnail" />
+              </a>
             </div>
-            
+
             <!-- year of media -->
             <div id="display-info">
               <p> {{year}} </p>
-              
+
               <!-- Description for given content -->
               <p> {{description}} </p>
             </div>
-            
+
           </center>
         </script>
         <div id="display-result"></div>
@@ -68,6 +77,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="js/displays.js"></script>
     <script src="js/closeup.js"></script>
+    <script src="js/lightbox.js"></script>
     <!-- Bootstrap Basic Template End -->
   </body>
 </html>
