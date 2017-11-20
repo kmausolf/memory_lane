@@ -7,6 +7,9 @@
 
 /****************************** Setup ******************************/
 
+//variable to store the current user (currently only used by settings.js)
+var currentUser;
+
 //calls functions on page load
 //$(document).ready(function(){
 
