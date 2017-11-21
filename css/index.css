@@ -12,6 +12,10 @@ body {
 
 /********** nav bar **********/
 
+.navbar-fixed-top {
+  position: static;
+}
+
 .nav {
   z-index:0;
 }
@@ -32,8 +36,9 @@ body {
 /********** login **********/
 
 #login {
-  top: 65px;
+  top: 5px;
   position: relative;
+  height: 25vh;
   /*background-color: lightgray;*/
   /*min-height: 220px;*/
   /*max-height: 0px;*/
@@ -63,7 +68,7 @@ body {
 }
 
 .navbar-default {
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(50,50,50,.7);
 }
 
 #background {
@@ -86,7 +91,7 @@ body {
 }
 
 .jumbotron .container{
-  position: fixed;
+  position: static;
   left: 0;
   right: 0;
   top: 50px;
