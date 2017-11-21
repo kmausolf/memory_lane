@@ -38,7 +38,7 @@ function getSetting(setting) {
           writeUserData('/settings', setting, true);
           return true;
         }
-        //catches promises that resulted in rejection
+        //catches that resulted in rejection
       }).catch(function(error) {
         console.log(error);
       });
