@@ -4,7 +4,7 @@
   color: #7c645b;
   font-size: 14px;
   font-weight: bold;
-  padding: 14px 10px;
+  padding: 14px 5px;
   font-family: 'Courgette', sans-serif;
 }
 
@@ -13,9 +13,10 @@
 }
 
 .nav img{
-  width: 4vw;
-  height: 4vw;
+  width: 10vw;
+  height: 10vw;
   border: 0;
+  margin-top: 10px;
 }
 
 /********** body & jumbotron **********/
@@ -119,7 +120,6 @@ ul{
   height:100%;
   width:100%;
   object-fit:fill;
-  border-radius: 50%;
   float:right;
   position:relative;
   top: 3vw;
