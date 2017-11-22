@@ -6,7 +6,7 @@
   z-index: 1;
 }
 
-.nav .text-center{
+.nav .text-center {
   color: #7c645b;
   font-weight: bold;
   font-size: 28px;
@@ -16,7 +16,7 @@
   left: -25px;
 }
 
-.jumbotron{
+.jumbotron {
   background-image:url('');
   min-height: 100vh;
   background-repeat: no-repeat;
@@ -24,7 +24,7 @@
   background-color: white;
 }
 
-.jumbotron .container{
+.jumbotron .container {
   position: relative;
   top: 100px;
 }
@@ -40,7 +40,7 @@
   font-family: 'Courgette', cursive;
 }
 
-body{
+body {
   padding-top: 75px;
 }
 

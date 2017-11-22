@@ -8,17 +8,34 @@ $(document).ready(function(){
     //currentUser is a variable from the file, personal.js
     currentUser = firebaseUser;
     console.log('---');
-    /*
-    getSetting('music_setting');
-    getSetting('movies_setting');
-    getSetting('shows_setting');
-    */
+
+    //getSetting('music');
+    //getSetting('movies');
+    //getSetting('shows');
+
+    try{
+      getSetting('music').then(function(status) {
+        setButtonColor('music', status);
+      });
+      getSetting('shows').then(function(status) {
+        setButtonColor('shows', status);
+      });
+      getSetting('movies').then(function(status) {
+        setButtonColor('movies', status);
+      });
+    }
+    catch(e) {
+      console.log(e);
+    }
+
+
+
   });
 });
 
-//function to get the specified setting of the user
+//function to get a promise of the specified setting of the user
 function getSetting(setting) {
-  
+
   //If the user is logged in, pulls setting from database
   if(currentUser) {
     //Gets promise of user settings data specified by "setting" param
@@ -26,17 +43,17 @@ function getSetting(setting) {
     var promise = getUserData('/settings', setting);
     //Attempts to get value of promise
     try{
-      promise.then(function(resolveValue) {
+      return promise.then(function(resolveValue) {
         //returns setting if the promise value resulted in !null
         if(resolveValue != null) {
           console.log('Returning found setting for ' + setting + ': ' + resolveValue);
-          return resolveValue;
+          return Promise.resolve(resolveValue);
         }
         //else set the setting in database to true and returns true
         else {
           console.log(setting + ' was previous null or undefined (in database). Setting it to true.');
           writeUserData('/settings', setting, true);
-          return true;
+          return Promise.resolve(true);
         }
         //catches that resulted in rejection
       }).catch(function(error) {
@@ -57,13 +74,13 @@ function getSetting(setting) {
     //returns setting if the setting is found in localStorage
     if(currSetting != null) {
       console.log('Returning found setting for ' + setting + ': ' + currSetting);
-      return currSetting;
+      return Promise.resolve(currSetting);
     }
     //else set the setting in localStorage to be true and returns true
     else {
       console.log(setting + ' was previous null or undefined (in localStorage). Setting it to true.');
       localStorage.setItem(setting, true);
-      return true;
+      return Promise.resolve(true);
     }
   }
 }
@@ -80,6 +97,85 @@ function setSetting(setting, value) {
   }
 }
 
+//function to toggle the specified setting for the user
+function toggleSetting(setting) {
+  //if the user is logged in, toggles user's settings in database
+  if(currentUser) {
+    var promise = getSetting(setting);
+    var buttonID = setting + '_button';
+    try {
+      promise.then(function(status) {
+        
+        
+        if(status == 'true') {
+          status = false;
+        }
+        else {
+          status = true;
+        }
+        
+        //sets the button colors after toggle
+        setButtonColor(setting, status);
+        setSetting(setting, status);
+      }).catch(function(error) {
+        console.log(error);
+      });
+    }
+    catch(e) {
+      console.log('promise.then error:')
+      console.log(e);
+    }
+  }
+  //otherwise toggles settings in local storage
+  else {
+    try{
+      console.log(localStorage.getItem(setting));
+      
+      if(localStorage.getItem(setting) == 'true') {
+        localStorage.setItem(setting, false);
+        setButtonColor(setting, false);
+      }
+      else {
+        localStorage.setItem(setting, true);
+        setButtonColor(setting, true);
+      }
+      
+      /*
+      console.log('setting: ' + setting);
+
+      var status = localStorage.getItem(setting);
+      var status2 = !status;
+      var status3 = true;
+
+      console.log('status: ' + !status);
+      console.log('status2: ' + status3);
+      
+      localStorage.setItem(setting, status);
+      
+      //sets the button colors after toggle
+      setButtonColor(setting, status);
+      */
+    }
+    catch(e) {
+      console.log(e);
+    }
+  }
+}
+
+//helper function to set a button's color
+function setButtonColor(button, string) {
+  
+  console.log(typeof string);
+  var status = (string == 'true');
+  
+  var buttonID = button + '_button';
+  if(status == true) {
+    document.getElementById(buttonID).style.backgroundColor = '#33FF5A';
+  }
+  else {
+    document.getElementById(buttonID).style.backgroundColor = '#FF3333';
+  }
+}
 
 /****************************** Old Code ******************************/
 
