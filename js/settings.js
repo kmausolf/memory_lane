@@ -127,7 +127,7 @@ function toggleSetting(setting) {
 function setButtonState(button, status) {
   var buttonID = button + '_button';
   if(status) {
-    document.getElementById(buttonID).style.backgroundColor = '#33FF5A';
+    document.getElementById(buttonID).style.backgroundColor = '#11E93E';
     document.getElementById(buttonID).firstChild.data = button + ' (on)';
   }
   else {
@@ -143,8 +143,7 @@ function togglerandom(string) {
   console.log('test function');
 }
 
-
-(function() {  
+(function() {
 
   var app = angular.module('settings', []);
   app.controller("ButtonCtrl", function($scope){
