@@ -4,32 +4,21 @@ $(document).ready(function(){
   //Firebase promise that fires once it's determined if the user is logged in or out
   firebase.auth().onAuthStateChanged(firebaseUser => {
     //localStorage.clear();
-    console.log('firebase.auth().onAuthStateChanged');
+    console.log('firebase.auth().onAuthStateChanged:');
     //currentUser is a variable from the file, personal.js
     currentUser = firebaseUser;
-    console.log('---');
 
-    //getSetting('music');
-    //getSetting('movies');
-    //getSetting('shows');
+    getSetting('music').then(function(status) {
+      setButtonState('music', status);
+    });
+    getSetting('shows').then(function(status) {
+      setButtonState('shows', status);
+    });
+    getSetting('movies').then(function(status) {
+      setButtonState('movies', status);
+    });
 
-    try{
-      getSetting('music').then(function(status) {
-        setButtonColor('music', status);
-      });
-      getSetting('shows').then(function(status) {
-        setButtonColor('shows', status);
-      });
-      getSetting('movies').then(function(status) {
-        setButtonColor('movies', status);
-      });
-    }
-    catch(e) {
-      console.log(e);
-    }
-
-
-
+    console.log('----- page setup complete -----');
   });
 });
 
@@ -51,7 +40,7 @@ function getSetting(setting) {
         }
         //else set the setting in database to true and returns true
         else {
-          console.log(setting + ' was previous null or undefined (in database). Setting it to true.');
+          console.log(setting + ' was previous null or undefined (in database).\nSetting it to true.');
           writeUserData('/settings', setting, true);
           return Promise.resolve(true);
         }
@@ -69,8 +58,8 @@ function getSetting(setting) {
 
   //else if the user is not logged in, pulls the setting from localStorage
   else {
-    console.log('User is logged out. Getting ' + setting + ' setting from localStorage.');
-    currSetting = localStorage.getItem(setting);
+    console.log('User is logged out.\nGetting ' + setting + ' setting from localStorage.');
+    currSetting = JSON.parse(localStorage.getItem(setting));
     //returns setting if the setting is found in localStorage
     if(currSetting != null) {
       console.log('Returning found setting for ' + setting + ': ' + currSetting);
@@ -79,7 +68,7 @@ function getSetting(setting) {
     //else set the setting in localStorage to be true and returns true
     else {
       console.log(setting + ' was previous null or undefined (in localStorage). Setting it to true.');
-      localStorage.setItem(setting, true);
+      localStorage.setItem(setting, JSON.stringify(true));
       return Promise.resolve(true);
     }
   }
@@ -93,7 +82,7 @@ function setSetting(setting, value) {
   }
   //sets settings for non-logged-in users
   else {
-    localStorage.setItem(setting, value);
+    localStorage.setItem(setting, JSON.stringify(value));
   }
 }
 
@@ -104,18 +93,11 @@ function toggleSetting(setting) {
     var promise = getSetting(setting);
     var buttonID = setting + '_button';
     try {
+      //once the data has been gotten
       promise.then(function(status) {
-        
-        
-        if(status == 'true') {
-          status = false;
-        }
-        else {
-          status = true;
-        }
-        
-        //sets the button colors after toggle
-        setButtonColor(setting, status);
+        //toggles the status and sets the button color and setting to new status
+        status = !status;
+        setButtonState(setting, status);
         setSetting(setting, status);
       }).catch(function(error) {
         console.log(error);
@@ -128,33 +110,12 @@ function toggleSetting(setting) {
   }
   //otherwise toggles settings in local storage
   else {
-    try{
-      console.log(localStorage.getItem(setting));
-      
-      if(localStorage.getItem(setting) == 'true') {
-        localStorage.setItem(setting, false);
-        setButtonColor(setting, false);
-      }
-      else {
-        localStorage.setItem(setting, true);
-        setButtonColor(setting, true);
-      }
-      
-      /*
-      console.log('setting: ' + setting);
-
-      var status = localStorage.getItem(setting);
-      var status2 = !status;
-      var status3 = true;
-
-      console.log('status: ' + !status);
-      console.log('status2: ' + status3);
-      
-      localStorage.setItem(setting, status);
-      
-      //sets the button colors after toggle
-      setButtonColor(setting, status);
-      */
+    try {
+      var status = JSON.parse(localStorage.getItem(setting));
+      status = !status;
+      setButtonState(setting, status);
+      setSetting(setting, status);
+      console.log("toggled localStorage setting \'" + setting + "\'\nfrom " + !status + " to " + status);
     }
     catch(e) {
       console.log(e);
@@ -163,17 +124,15 @@ function toggleSetting(setting) {
 }
 
 //helper function to set a button's color
-function setButtonColor(button, string) {
-  
-  console.log(typeof string);
-  var status = (string == 'true');
-  
+function setButtonState(button, status) {
   var buttonID = button + '_button';
-  if(status == true) {
+  if(status) {
     document.getElementById(buttonID).style.backgroundColor = '#33FF5A';
+    document.getElementById(buttonID).firstChild.data = button + ' (on)';
   }
   else {
     document.getElementById(buttonID).style.backgroundColor = '#FF3333';
+    document.getElementById(buttonID).firstChild.data = button + ' (off)';
   }
 }
 
