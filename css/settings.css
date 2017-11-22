@@ -1,26 +1,23 @@
+.nav #back_button {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 5vw;
+  z-index: 1;
+}
 
-
-.nav a{
+.nav .text-center{
   color: #7c645b;
-  font-size: 28px;
   font-weight: bold;
-  padding: 14px 10px;
+  font-size: 28px;
   font-family: 'Courgette', sans-serif;
-}
-
-.nav li{
-  display: inline;
-}
-
-.nav img{
-  width: 28px;
-  height: 28px;
-  border: 0;
+  position: relative;
+  margin-top: 5px;
+  left: -25px;
 }
 
 .jumbotron{
   background-image:url('');
-  /*min-height: 900px;*/
   min-height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
@@ -35,7 +32,7 @@
 .jumbotron h1 {
   color: #fff;
   text-shadow:
-  -1px -1px 0 #000,
+    -1px -1px 0 #000,
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;
