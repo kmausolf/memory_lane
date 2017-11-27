@@ -87,6 +87,12 @@ function fill_section(string) {
   document.getElementById(string + "_thumbnail4").src = currArray[3].picture;
 }
 
+/****************************** Fills Personal Section ******************************/
+
+function fill_personal_section() {
+  
+}
+
 /****************************** Content On-Click ******************************/
 
 //functionality for when a thumbnail in a section is clicked
