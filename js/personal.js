@@ -150,15 +150,17 @@ function submitForm() {
       var year = document.getElementById('year').value;
       var title = document.getElementById('title').value;
       var description = document.getElementById('description').value;
+      var databaseYear = determineDatabaseYear(year);
+
       //attempts to submit the data to database
       try {
-      writeUserData('/personal_memories' + '/' + year + '/' + title, 'year', year);
-      writeUserData('/personal_memories' + '/' + year + '/' + title, 'title', title);
-      writeUserData('/personal_memories' + '/' + year + '/' + title, 'description', description);
-      //logs
-      console.log('personal memory form submitted');
-      alert('Memory Submitted!');
-      //form.submit();
+        writeUserData('/personal_memories' + '/' + databaseYear + '/' + title, 'year', year);
+        writeUserData('/personal_memories' + '/' + databaseYear + '/' + title, 'title', title);
+        writeUserData('/personal_memories' + '/' + databaseYear + '/' + title, 'description', description);
+        //logs
+        console.log('personal memory form submitted');
+        alert('Memory Submitted!');
+        //form.submit();
       }
       //logs error in case data submission failed
       catch(e) {
@@ -175,6 +177,23 @@ function submitForm() {
     document.getElementById('submit_handler').click();
   }
 };
+
+//helper function to determine which decade to store data in
+function determineDatabaseYear(year) {
+  //turns string parameter into int
+  var decade = parseInt(year);
+  if (decade > 1969){
+    decade = 1970
+  }
+  else if (decade > 1959) {
+    decade = 1960
+  }
+  else {
+    decade = 1950
+  } 
+  console.log('year being used: ' + decade);
+  return decade.toString();
+}
 
 /****************************** Old Code ******************************/
 

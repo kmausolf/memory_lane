@@ -88,11 +88,20 @@ function fill_section(string) {
 }
 
 /****************************** Fills Personal Section ******************************/
-
+/*
 function fill_personal_section() {
+  var exploreYear = localStorage.getItem('explore_year');
+  var 
   
+  
+  var yearPromise = getUserData('/personal_memories', + exploreYear + )
 }
 
+//helper function to get data for a single memory
+function getMemory(path, key) {
+  return getUserData ();
+}
+*/
 /****************************** Content On-Click ******************************/
 
 //functionality for when a thumbnail in a section is clicked
