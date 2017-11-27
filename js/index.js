@@ -63,6 +63,33 @@
   });
 
   /****************************** Login, Logout, Signup ******************************/
+      /******************************Modal Functionality**********************/
+      //from https://www.w3schools.com/howto/howto_css_modals.asp
+      // Get the modal
+  var modal = document.getElementById('myModal');
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("modalButton");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks on the button, open the modal 
+  btn.onclick = function() {
+      modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+      modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
 
   //Tutorial: https://www.youtube.com/watch?v=-OKrloDzGpU
 
@@ -83,14 +110,22 @@
   */
 
   //Get elements from html document
+  const login_form = document.getElementById("login_form");
   const login_email = document.getElementById('login_email');
   const login_password = document.getElementById('login_password');
-  const login_button = document.getElementById('login_button');
   const logout_button = document.getElementById('logout_button');
-  const signup_button = document.getElementById('signup_button');
+  const login_button = document.getElementById('login_button');
+  const login_action = document.getElementById('login_action');
+  const signup_action = document.getElementById('signup_action');
+
+  //test eventlistener bug
+  login_button.addEventListener('click', e=> {
+    //popup
+    window.alert("Working!");
+  });
 
   //Adds login event
-  login_button.addEventListener('click', e => {
+  login_action.addEventListener('click', e => {
     //Get email and password
     const email = login_email.value;
     const password = login_password.value;
@@ -104,7 +139,6 @@
     });
   });
 
-
   //Adds logout event
   logout_button.addEventListener('click', e => {
     try {
@@ -114,10 +148,11 @@
       console.log(e);
       alert('logout failed');
     }
+
   });
 
   //Adds signup Event
-  signup_button.addEventListener('click', e => {
+  signup_action.addEventListener('click', e => {
     const email = login_email.value;
     const password = login_password.value;
     //Attempts to sign in with entered email and password
@@ -141,27 +176,45 @@
 
   //Listener that activates when a user is logged in or out
   firebase.auth().onAuthStateChanged(firebaseUser => {
-    //shows appropriate buttons for logged-in users
+    //toggle the login/logout buttons
+    $('[data-login-button], [data-logout-button]').click(function(){
+      $('[data-login-item], [data-logout-item]').toggleClass('hidden');
+    });
+
+    //close modal and show appropriate button for logged-in users
     if(firebaseUser) {
       console.log('user has logged in');
       //removes appropriate buttons
-      email_div.classList.add('hide');
-      password_div.classList.add('hide');
-      login_button.classList.add('hide');
-      signup_button.classList.add('hide');
-      //adds logout button
-      logout_button.classList.remove('hide');
+      $('#myModal').modal('hide');
     }
+
     //shows appropriate buttons for logged-out users
     else {
       console.log('user is logged out');
       //hides logout button
-      logout_button.classList.add('hide');
+      logout_form.classList.add('hide');
       //adds appropriate buttons
-      email_div.classList.remove('hide');
-      password_div.classList.remove('hide');
-      login_button.classList.remove('hide');
-      signup_button.classList.remove('hide');
+      login_form.classList.remove('hide');
     }
   });
 })();
+
+//Adds Show Password functionality
+  function showPassword() {
+    
+    var key_attr = $('#login_password').attr('type');
+    
+    if(key_attr != 'text') {
+        
+        $('.checkbox').addClass('show');
+        $('#login_password').attr('type', 'text');
+        
+    } else {
+        
+        $('.checkbox').removeClass('show');
+        $('#login_password').attr('type', 'password');
+        
+    }  
+  }
+
+
