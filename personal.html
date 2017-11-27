@@ -30,45 +30,39 @@
     <nav class="nav navbar-default navbar-fixed-top">
       <div class="container">
         <ul class="text-center">
-          <script>
-            document.write("<li><a href='explore.html' style='font-size: 8vw'>Back to Settings</a></li>");
-          </script>
+
+          <ul class="pull-left">
+            <li><a href="settings.html"><img id="back_button" src="images/back.png"></a></li>
+          </ul>
+
+          <ul class="text-center">
+            <li>Add Memory~</li>
+          </ul>
+
         </ul>
       </div>
     </nav>
     <!-- (End) Nav Bar ------------------------>
 
-
     <!-- (Start) Jumbotron ------------------------>
-    <div class="jumbotron">
-      <div class="container">
-        <center ng-app="selecting">
 
-          <h1>Personal Info</h1>
+    <h1>Personal Info</h1>
+    <div id='content_wrapper'>
 
-          <!-- Test Image -->
-          <div class="content_box" id="testImageDiv">
-            <img id="testImage" class="content_thumbnail" src="images/Filler.jpg" onClick="initializeUserData()">
-          </div>
+      <form id="personal_form">
+        Full Year: <input type="number" id="year" form="personal_form" min="1900" max="2017" value="2017" required><br>
+        Title: <input type="text" id="title" form="personal_form" maxlength="20" required value="Enter your title here!"><br>
+        <p>Description:</p>
+        <textarea id="description" form="personal_form" rows="4" cols="50" maxlength="200" required>Enter a description of your memory here!</textarea>
 
-          <!-- Test Button -->
-          <div class="content_box" id="testButtonDiv">
-            <button id="testButton" class="content_thumbnail" src="images/Filler.jpg" onClick="writeUserData('/settings', 'email', 'email@random.com')">Test Button</button>
-          </div>
 
-          <!-- Test Button: Write to Firebase-->
-          <div class="content_box" id="testButtonDiv">
-            <button id="testButton" class="content_thumbnail" src="images/Filler.jpg" onClick="getUserData('/settings', 'email')">Test Button 2</button>
-          </div>
+        <button type="button" onclick="submitForm()" required>Submit</button>
+        <input id="submit_handler" type="submit" style="display: none">
 
-          <div class="yt_vid">
-            <iframe class="video" src="https://www.youtube.com/embed/knfrxj0T5NY"
-                    frameborder="0" allowfullscreen></iframe>
-          </div>
+      </form>
 
-        </center>
-      </div>
     </div>
+
     <!-- (End) Jumbotron ------------------------>
 
     <!-- Javascript -->
@@ -79,3 +73,27 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 </html>
+
+<!------------- OLD CODE ----------->
+<!--
+<!-- Test Image -- >
+<div class="content_box" id="testImageDiv">
+<img id="testImage" class="content_thumbnail" src="images/Filler.jpg" onClick="initializeUserData()">
+</div>
+
+<!-- Test Button -- >
+<div class="content_box" id="testButtonDiv">
+<button id="testButton" class="content_thumbnail" src="images/Filler.jpg" onClick="writeUserData('/settings', 'email', 'email@random.com')">Test Button</button>
+</div>
+
+<!-- Test Button: Write to Firebase-- >
+<div class="content_box" id="testButtonDiv">
+<button id="testButton" class="content_thumbnail" src="images/Filler.jpg" onClick="getUserData('/settings', 'email')">Test Button 2</button>
+</div>
+-->
+<!--
+<div class="yt_vid">
+<iframe class="video" src="https://www.youtube.com/embed/knfrxj0T5NY"
+frameborder="0" allowfullscreen></iframe>
+</div>
+-->

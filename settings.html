@@ -51,22 +51,20 @@
 
           <h1>I want to remember...</h1>
 
-          <button type="button" class="settings" id="music_button" onclick="toggleSetting('music')">Music</button>
+          <div>
+            <button type="button" class="settings" id="music_button" onclick="toggleSetting('music')">Music</button>
 
-          <button type="button" class="settings" id="shows_button" onclick="toggleSetting('shows')">Shows</button>
+            <button type="button" class="settings" id="shows_button" onclick="toggleSetting('shows')">Shows</button>
 
-          <button type="button" class="settings" id="movies_button" onclick="toggleSetting('movies')">Movies</button>
+            <button type="button" class="settings" id="movies_button" onclick="toggleSetting('movies')">Movies</button>
+          </div>
 
-<!--
-<button type="button" class="btn" ng-class="{true: 'btn-success', false: 'btn-default'}[musicActive]" ng-click="toggleActive('music')">Music</button>
+          <button type="button" class="settings" id="personal_button" onclick="window.location.href='personal.html'">Add Personal Memories</button>
 
-<button type="button" class="btn" ng-class="{true: 'btn-success', false: 'btn-default'}[moviesActive]" ng-click="toggleActive('movies')">Movies</button>
-
-<button type="button" class="btn" ng-class="{true: 'btn-success', false: 'btn-default'}[showsActive]" ng-click="toggleActive('shows')">Shows</button>
--->
         </center>
       </div>
     </div>
+
 
     <!-- End of Jumbotron ------------------------>
     <script language="JavaScript"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
@@ -78,3 +76,12 @@
   </body>
 
 </html>
+
+<!------------- OLD CODE ----------->
+<!--
+<button type="button" class="btn" ng-class="{true: 'btn-success', false: 'btn-default'}[musicActive]" ng-click="toggleActive('music')">Music</button>
+
+<button type="button" class="btn" ng-class="{true: 'btn-success', false: 'btn-default'}[moviesActive]" ng-click="toggleActive('movies')">Movies</button>
+
+<button type="button" class="btn" ng-class="{true: 'btn-success', false: 'btn-default'}[showsActive]" ng-click="toggleActive('shows')">Shows</button>
+-->
