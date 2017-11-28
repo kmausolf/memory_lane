@@ -43,11 +43,7 @@
         </ul>
 
         <ul class="text-center">
-          <!--
-<script>
-document.write("<li><a href=\"index.html\">" + localStorage.selected_year + "</a></li>");
-</script>
--->
+
           <script>
             document.write(localStorage.selected_year);
           </script>
@@ -61,7 +57,7 @@ document.write("<li><a href=\"index.html\">" + localStorage.selected_year + "</a
     <div class="container" ng-controller="DivHider">
 
       <!-- Music Recommender -------------------------------------------------->
-      <div class="panel panel-default" ng-show="checkSettings('music')">
+      <div id="music_wrapper" class="panel panel-default" ng-show="checkSettings('music')">
         <div class="panel-heading", id="music-rec">
           <h2>Music</h2>
           <!-- We can put various options up here --->
@@ -103,7 +99,7 @@ document.write("<li><a href=\"index.html\">" + localStorage.selected_year + "</a
       <!-- End Music Recommender -------------------------------------------------->
 
       <!-- Shows Recommender -------------------------------------------------->
-      <div class="panel panel-default" ng-show="checkSettings('shows')">
+      <div id="shows_wrapper" class="panel panel-default" ng-show="checkSettings('shows')">
         <div class="panel-heading", id="shows-rec">
           <h2>Shows</h2>
           <!-- We can put various options up here --->
@@ -145,7 +141,7 @@ document.write("<li><a href=\"index.html\">" + localStorage.selected_year + "</a
       <!-- End Shows Recommender -------------------------------------------------->
 
       <!-- Movie Recommender -------------------------------------------------->
-      <div class="panel panel-default" ng-show="checkSettings('movies')">
+      <div id="movies_wrapper" class="panel panel-default" ng-show="checkSettings('movies')">
         <div class="panel-heading", id="movie-rec">
           <h2>Movies</h2>
           <!-- We can put various options up here --->
@@ -188,7 +184,7 @@ document.write("<li><a href=\"index.html\">" + localStorage.selected_year + "</a
 
 
       <!-- News Recommender -------------------------------------------------->
-      <div class="panel panel-default" ng-show="false">
+      <div id="news_wrapper" class="panel panel-default" ng-show="false">
         <div class="panel-heading", id="news-rec">
           <h2>News</h2>
           <!-- We can put various options up here --->
@@ -243,3 +239,10 @@ document.write("<li><a href=\"index.html\">" + localStorage.selected_year + "</a
 
   </body>
 </html>
+
+<!------------- OLD CODE ----------->
+<!--
+<script>
+document.write("<li><a href=\"index.html\">" + localStorage.selected_year + "</a></li>");
+</script>
+-->

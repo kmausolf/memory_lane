@@ -4,10 +4,36 @@
 
 //calls function upon page load
 $(document).ready(function(){
+
   determineYear();
   fill_section('music');
   fill_section('shows');
   fill_section('movies');
+
+  firebase.auth().onAuthStateChanged(firebaseUser => {
+    //localStorage.clear();
+    console.log('firebase.auth().onAuthStateChanged:');
+    //currentUser is a variable from the file, personal.js
+    currentUser = firebaseUser;
+    //hides or shows explore page sections based on user settings
+    try {
+      getSetting('music').then(function(status) {
+        setWrapperState('music', status);
+      });
+      getSetting('shows').then(function(status) {
+        setWrapperState('shows', status);
+      });
+      getSetting('movies').then(function(status) {
+        setWrapperState('movies', status);
+      });
+    }
+    catch(e) {
+      console.log(e);
+    }
+
+    console.log('----- page setup complete -----');
+  });
+
 });
 
 /****************************** Helper Functions ******************************/
@@ -52,6 +78,68 @@ function determineYear() {
   console.log('year being used: ' + localStorage.explore_year);
 }
 
+function setWrapperState(section, status) {
+  var divID = section + '_wrapper';
+  if(status) {
+    document.getElementById(divID).classList.remove('hide');
+  }
+  else {
+    document.getElementById(divID).classList.add('hide');
+  }
+}
+
+//function to get a promise of the specified setting of the user
+function getSetting(setting) {
+
+  //If the user is logged in, pulls setting from database
+  if(currentUser) {
+    //Gets promise of user settings data specified by "setting" param
+    console.log('Getting ' + setting + ' setting from database.');
+    var promise = getUserData('/settings', setting);
+    //Attempts to get value of promise
+    try{
+      return promise.then(function(resolveValue) {
+        //returns setting if the promise value resulted in !null
+        if(resolveValue != null) {
+          console.log('Returning found setting for ' + setting + ': ' + resolveValue);
+          return Promise.resolve(resolveValue);
+        }
+        //else set the setting in database to true and returns true
+        else {
+          console.log(setting + ' was previous null or undefined (in database).\nSetting it to true.');
+          writeUserData('/settings', setting, true);
+          return Promise.resolve(true);
+        }
+        //catches that resulted in rejection
+      }).catch(function(error) {
+        console.log(error);
+      });
+    }
+    //logs error if attempt failed
+    catch(e) {
+      console.log('promise.then error:')
+      console.log(e);
+    }
+  }
+
+  //else if the user is not logged in, pulls the setting from localStorage
+  else {
+    console.log('User is logged out.\nGetting ' + setting + ' setting from localStorage.');
+    currSetting = JSON.parse(localStorage.getItem(setting));
+    //returns setting if the setting is found in localStorage
+    if(currSetting != null) {
+      console.log('Returning found setting for ' + setting + ': ' + currSetting);
+      return Promise.resolve(currSetting);
+    }
+    //else set the setting in localStorage to be true and returns true
+    else {
+      console.log(setting + ' was previous null or undefined (in localStorage). Setting it to true.');
+      localStorage.setItem(setting, JSON.stringify(true));
+      return Promise.resolve(true);
+    }
+  }
+}
+
 /****************************** Fills Content Sections ******************************/
 
 //fills in the section of the explore page corresponding to the string parameter
@@ -88,20 +176,32 @@ function fill_section(string) {
 }
 
 /****************************** Fills Personal Section ******************************/
-/*
+
 function fill_personal_section() {
+  //Attempts to initialize user and get user's uid
+  var uid;
+  var user = firebase.auth().currentUser;
+  if (user == null) {
+    console.log('User is null. Cannot get user data.');
+    return;
+  }
+  var uid = user.uid;
+  //builds the path
+  var path = '/personal_memories' + exploreYear;
   var exploreYear = localStorage.getItem('explore_year');
-  var 
-  
-  
-  var yearPromise = getUserData('/personal_memories', + exploreYear + )
+  //Creates firebase database reference to appropriate data in firebase
+  var ref = firebase.database().ref('/users/' + uid + path);
+  var object = ref.toJSON();
+  console.log(object);
+
+  //var yearPromise = getUserData()
 }
 
 //helper function to get data for a single memory
 function getMemory(path, key) {
-  return getUserData ();
+  //return getUserData ();
 }
-*/
+
 /****************************** Content On-Click ******************************/
 
 //functionality for when a thumbnail in a section is clicked

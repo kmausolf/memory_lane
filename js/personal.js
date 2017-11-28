@@ -195,6 +195,99 @@ function determineDatabaseYear(year) {
   return decade.toString();
 }
 
+/****************************** Test Code ******************************/
+
+function fill_personal_section() {
+  //Attempts to initialize user and get user's uid
+  try {
+    var uid;
+    var user = firebase.auth().currentUser;
+    if (user == null) {
+      console.log('User is null. Cannot get user data.');
+      return null;
+    }
+    var uid = user.uid;
+    //builds the path
+    var exploreYear = localStorage.getItem('explore_year');
+    var path = '/personal_memories' + '/' + exploreYear;
+    //builds the path to the data
+    path = '/users/' + uid + path;
+    //Creates firebase database reference to appropriate data in firebase
+    var ref = firebase.database().ref(path);
+
+    //create a temp variable to fill allMemories with
+    var singleMemory = {};
+    //create a JSON object to be returned
+    var allMemories = [];
+
+    /*
+    ref.on('child_added', function(snap) { 
+      allMemories.push(Promise.resolve(snap));
+    });
+
+    Promise.all(allMemories).then(values => {
+      console.log(values);
+    });
+    */
+    //for each child of this firebase reference, 
+    //gets a snapchshot of that child's data
+    ref.on('child_added', function(snap) {
+      //gets the key, year, title, and description of the child
+      //var key = snap.key;
+      var year = snap.child('year').val();
+      var title = snap.child('title').val();
+      var description = snap.child('description').val();
+
+      //console.log('key: ' + key);
+      console.log('year: ' + year);
+      console.log('title: ' + title);
+      console.log('description: ' + description);
+
+      //creates a "memory" out of the year, title, description
+      singleMemory['title'] = title;
+      singleMemory['year'] = year;
+      singleMemory['description'] = description;
+      //adds the single memory to 
+      allMemories.push(singleMemory);
+      console.log('pushing: ' + JSON.stringify(singleMemory));
+    });
+    
+    console.log(JSON.stringify(allMemories));
+
+    /*
+    var allMemories2 = Promise.all(allMemories);
+    allMemories2.then(data => console.log(data));
+    */
+    /*
+    /*https://stackoverflow.com/questions/27181691/am-i-using-foreach-correctly* /
+    ref.once('value', function(snapshot) {
+      console.log('test2');
+      console.log(snapshot);
+      try {
+        snapshot.forEach(function(childSnapshot) {
+          console.log('test3');
+          var childKey = childSnapshot.key;
+          var childData = childSnapshot.val();
+          //$scope.foo[childKey] = childData;
+          console.log(childKey);
+          console.log(childData);
+        });
+      }
+      catch(e) {
+        console.log('error');
+        console.log(e);
+      }
+    });
+    */
+    //console.log(ref);
+
+    //var yearPromise = getUserData()
+  }
+  catch(e) {
+    console.log(e);
+  }
+}
+
 /****************************** Old Code ******************************/
 
 /*
