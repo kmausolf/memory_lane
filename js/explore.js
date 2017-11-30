@@ -36,25 +36,26 @@ $(document).ready(function(){
 
     //only applies to logged-in users
     if(currentUser){
-      
+
       //displays the personal Section
       getSetting('personal').then(function(status) {
         setWrapperState('personal', status);
       });
-      
+
       //pulls the user's data from database and fills localStorage with it
       if(localStorage.getItem('previous_page') == 'home'){
         //???what is the value of personalData???
         get_personal_data().then(function(personalData) {
           fill_personal_section();
+          hidePersonal();
         }).catch(function(e) {
           console.log(e);
         });
-      }      
-
+      }
+      else {
+        hidePersonal();
+      }
     }
-
-
 
     console.log('----- page setup complete -----');
   });  
@@ -161,6 +162,20 @@ function getSetting(setting) {
       console.log(setting + ' was previous null or undefined (in localStorage). Setting it to true.');
       localStorage.setItem(setting, JSON.stringify(true));
       return Promise.resolve(true);
+    }
+  }
+}
+
+//hides pictures in personal memories section of explore page
+//if there aren't enough memories
+function hidePersonal() {
+  var array = JSON.parse(localStorage.getItem('personalArray'));
+  var numMemories = array.length;
+  var i;
+  for(i = 3; i > -1; ++i) {
+    if(i > numMemories) {
+      var content = 'personal_content_' + i;
+      document.getElementById(content).classList.add('hide');
     }
   }
 }
@@ -279,7 +294,7 @@ function fill_personal_section() {
       //sets the current user
       localStorage.setItem('currentUser', user);
       //gets the user's data
-      currArray = JSON.parse(window.localStorage.getItem(arrayName));
+      currArray = JSON.parse(localStorage.getItem(arrayName));
       shuffle_array(currArray, arrayName);
     }
     //uses data from localStorage instead of database
@@ -288,17 +303,6 @@ function fill_personal_section() {
   catch(e) {
     console.log(e);
   }
-
-  console.log('test1: ' + currArray[0].title);
-  console.log('test1: ' + currArray[2].description);
-
-  /*
-  //fills the section of explore page specified by string parameter
-  document.getElementById('personal_thumbnail1').src = currArray[0].picture;
-  document.getElementById('personal_thumbnail2').src = currArray[1].picture;
-  document.getElementById('personal_thumbnail3').src = currArray[2].picture;
-  document.getElementById('personal_thumbnail4').src = currArray[3].picture;
-  */
 }
 
 /****************************** Content On-Click ******************************/
