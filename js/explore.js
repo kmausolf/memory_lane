@@ -180,6 +180,27 @@ function hidePersonal() {
   }
 }
 
+//shuffles the thumbnails in the personal category of the explore page
+function shufflePersonalImages() {
+  if(localStorage.getItem('previous_page') == 'home' ||
+     localStorage.getItem('previous_page') == 'explore') {
+    var pics = [0, 1, 2, 3];
+    shuffle_array(pics, 'personalThumbnails');
+    pics = JSON.parse(localStorage.getItem('personalThumbnails'));
+    document.getElementById("personal_thumbnail1").src = "images/nostalgia" + pics[0] + ".jpg";
+    document.getElementById("personal_thumbnail2").src = "images/nostalgia" + pics[1] + ".jpg";
+    document.getElementById("personal_thumbnail3").src = "images/nostalgia" + pics[2] + ".jpg";
+    document.getElementById("personal_thumbnail4").src = "images/nostalgia" + pics[3] + ".jpg";
+  }
+  else {
+    var pics = JSON.parse(localStorage.getItem('personalThumbnails'));
+    document.getElementById("personal_thumbnail1").src = "images/nostalgia" + pics[0] + ".jpg";
+    document.getElementById("personal_thumbnail2").src = "images/nostalgia" + pics[1] + ".jpg";
+    document.getElementById("personal_thumbnail3").src = "images/nostalgia" + pics[2] + ".jpg";
+    document.getElementById("personal_thumbnail4").src = "images/nostalgia" + pics[3] + ".jpg";
+  }
+}
+
 /****************************** Fills Content Sections ******************************/
 
 //fills in the section of the explore page corresponding to the string parameter
@@ -295,6 +316,7 @@ function fill_personal_section() {
       localStorage.setItem('currentUser', user);
       //gets the user's data
       currArray = JSON.parse(localStorage.getItem(arrayName));
+      console.log('shuffling array');
       shuffle_array(currArray, arrayName);
     }
     //uses data from localStorage instead of database
@@ -303,6 +325,8 @@ function fill_personal_section() {
   catch(e) {
     console.log(e);
   }
+
+  shufflePersonalImages();
 }
 
 /****************************** Content On-Click ******************************/
@@ -380,9 +404,7 @@ function fill_personal_section() {
         currArray = JSON.parse(window.localStorage.getItem(arrayName));
 * /
 
-
       });
-
     }
   }
   catch(e) {
