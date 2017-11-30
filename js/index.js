@@ -104,7 +104,6 @@
     });
   });
 
-
   //Adds logout event
   logout_button.addEventListener('click', e => {
     try {

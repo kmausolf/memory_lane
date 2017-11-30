@@ -59,6 +59,10 @@ ul {
   border-radius: 8px
 }
 
+#add_personal_button {
+  background-color: #008CBA;
+}
+
 body {
 
 }

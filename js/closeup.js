@@ -20,6 +20,5 @@ function newPage() {
 
 $(document).ready(function() {
   localStorage.setItem("previous_page", "closeup");
-  //alert("set closeup");
   newPage();
 });

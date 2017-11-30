@@ -75,14 +75,6 @@ ul{
   background-color: #F1D3EC;
 }
 
-#news-rec{
-  background-color: #A7D8E3;
-}
-
-#news-panel{
-  background-color: #D3ECF1;
-}
-
 #movie-rec{
   background-color: #A7E3D0;
 }
@@ -97,6 +89,14 @@ ul{
 
 #shows-panel{
   background-color: #D8D3F1;
+}
+
+#personal-rec{
+  background-color: #A7D8E3;
+}
+
+#personal-panel{
+  background-color: #D3ECF1;
 }
 
 /********** section content **********/

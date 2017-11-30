@@ -5,11 +5,14 @@
 //calls function upon page load
 $(document).ready(function(){
 
+  //localStorage.clear();
+
   determineYear();
   fill_section('music');
   fill_section('shows');
   fill_section('movies');
 
+  //fires when it's detected that the user is or isn't logged in
   firebase.auth().onAuthStateChanged(firebaseUser => {
     //localStorage.clear();
     console.log('firebase.auth().onAuthStateChanged:');
@@ -31,9 +34,30 @@ $(document).ready(function(){
       console.log(e);
     }
 
-    console.log('----- page setup complete -----');
-  });
+    //only applies to logged-in users
+    if(currentUser){
+      
+      //displays the personal Section
+      getSetting('personal').then(function(status) {
+        setWrapperState('personal', status);
+      });
+      
+      //pulls the user's data from database and fills localStorage with it
+      if(localStorage.getItem('previous_page') == 'home'){
+        //???what is the value of personalData???
+        get_personal_data().then(function(personalData) {
+          fill_personal_section();
+        }).catch(function(e) {
+          console.log(e);
+        });
+      }      
 
+    }
+
+
+
+    console.log('----- page setup complete -----');
+  });  
 });
 
 /****************************** Helper Functions ******************************/
@@ -58,8 +82,8 @@ function shuffle_array(array, string) {
 }
 
 //helper function for refresh button
-function set_prev() {
-  localStorage.setItem("previous_page", "explore");
+function set_prev(string) {
+  localStorage.setItem("previous_page", string);
 }
 
 //temporary function for default year values
@@ -78,6 +102,7 @@ function determineYear() {
   console.log('year being used: ' + localStorage.explore_year);
 }
 
+//adds or removes explore page categories based on settings
 function setWrapperState(section, status) {
   var divID = section + '_wrapper';
   if(status) {
@@ -149,24 +174,22 @@ function fill_section(string) {
   var arrayName = string + 'Array';
   var currArray = localStorage.getItem(arrayName);
 
-  //if coming from home page or 
-  //if if the data for the string parameter is not in localStorage,
-  if(localStorage.getItem('previous_page') == 'home' || 
-     currArray == null || currArray == 'undefined'){
-    //gets json object from js file and stores it in localStorage
+  //if the function was called from the home or explore pages or
+  //if the data for the string parameter is not in localStorage,
+  if(localStorage.getItem('previous_page') == 'home' ||
+     localStorage.getItem('previous_page') == 'explore' ||
+     currArray == null || currArray == undefined) {
+
+    //builds the name of the array
     var fileArray = string + localStorage.explore_year;
-    console.log('adding ' + fileArray + ' to localStorage...');
-    localStorage.setItem(arrayName, JSON.stringify(window[fileArray]));
+    //gets the respective array object from local js file ("displays.js")
+    currArray = window[fileArray];
+    //shuffles this json array object and stores it in localStorage
+    shuffle_array(currArray, arrayName);
   }
 
   //uses data from localStorage instead of the js data file
   currArray = JSON.parse(window.localStorage.getItem(arrayName));
-
-  //if function was called from home page GO button or explore page refresh button
-  if(localStorage.getItem("previous_page") != "closeup"){
-    //shuffles the array and stores it in localStorage
-    shuffle_array(currArray, arrayName);
-  }
 
   //fills the section of explore page specified by string parameter
   document.getElementById(string + "_thumbnail1").src = currArray[0].picture;
@@ -177,29 +200,105 @@ function fill_section(string) {
 
 /****************************** Fills Personal Section ******************************/
 
-function fill_personal_section() {
-  //Attempts to initialize user and get user's uid
-  var uid;
-  var user = firebase.auth().currentUser;
-  if (user == null) {
-    console.log('User is null. Cannot get user data.');
-    return;
-  }
-  var uid = user.uid;
-  //builds the path
-  var path = '/personal_memories' + exploreYear;
-  var exploreYear = localStorage.getItem('explore_year');
-  //Creates firebase database reference to appropriate data in firebase
-  var ref = firebase.database().ref('/users/' + uid + path);
-  var object = ref.toJSON();
-  console.log(object);
+//Helper function that returns a promise of an array 
+//of the current user's personal data
+function get_personal_data() {
 
-  //var yearPromise = getUserData()
+  console.log('getting personal data');
+
+  //Attempts to initialize user and get user's uid
+  try {
+    var uid;
+    var user = firebase.auth().currentUser;
+    if (user == null) {
+      console.log('User is null. Cannot get user data.');
+      return Promise.reject(null);
+    }
+    var uid = user.uid;
+    //builds the path
+    var exploreYear = localStorage.getItem('explore_year');
+    var path = '/personal_memories/' + exploreYear;
+    //builds the path to the data
+    path = '/users/' + uid + path;
+    //Creates firebase database reference to appropriate data in firebase
+    var ref = firebase.database().ref(path);
+
+    //create a temp variable to fill allMemories with
+    //var singleMemory = {};
+    //create a JSON object to be returned
+    var allMemories = [];
+
+    // Get the list of data from database
+    return ref.once('value', function(snapshot) {
+
+      // Iterate over the list
+      snapshot.forEach(function(childSnapshot) {
+        //get data from the child snapshot
+        var year = childSnapshot.child('year').val();
+        var title = childSnapshot.child('title').val();
+        var description = childSnapshot.child('description').val();
+        //create a temp variable to fill allMemories with
+        var singleMemory = {};
+
+        //creates a "memory" out of the year, title, description
+        singleMemory['title'] = title;
+        singleMemory['year'] = year;
+        singleMemory['description'] = description;
+        //adds the single memory to list of memories
+        allMemories.push(singleMemory);
+      });
+      console.log(allMemories);
+      //shuffles the array and stores it in localStorage
+      shuffle_array(allMemories, 'personalArray');
+      return Promise.resolve(JSON.stringify(allMemories));
+    });
+  }
+  catch(e) {
+    console.log(e);
+    return Promise.reject(null);
+  }
 }
 
-//helper function to get data for a single memory
-function getMemory(path, key) {
-  //return getUserData ();
+//loads the explore page based on personal data
+function fill_personal_section() {
+
+  //set up user-specific variables
+  var user = JSON.stringify(currentUser.uid);
+  //set up other variables
+  var arrayName =  'personalArray';
+  var currArray = localStorage.getItem(arrayName);
+
+  try {
+    //When a new user calls this function
+    //or when this function was called from the home page
+    if(localStorage.getItem('currentUser') !== user ||
+       localStorage.getItem('previous_page)' == 'home') ||
+       localStorage.getItem('previous_page') == 'explore' ||
+       currArray !== null || currArray == undefined) {
+
+      //sets the current user
+      localStorage.setItem('currentUser', user);
+      //gets the user's data
+      currArray = JSON.parse(window.localStorage.getItem(arrayName));
+      shuffle_array(currArray, arrayName);
+    }
+    //uses data from localStorage instead of database
+    currArray = JSON.parse(window.localStorage.getItem(arrayName));
+  }
+  catch(e) {
+    console.log(e);
+  }
+
+  console.log('test1: ' + currArray[0].title);
+  console.log('test1: ' + currArray[2].description);
+
+  /*
+  //fills the section of explore page specified by string parameter
+  document.getElementById('personal_thumbnail1').src = currArray[0].picture;
+  document.getElementById('personal_thumbnail2').src = currArray[1].picture;
+  document.getElementById('personal_thumbnail3').src = currArray[2].picture;
+  document.getElementById('personal_thumbnail4').src = currArray[3].picture;
+  */
 }
 
 /****************************** Content On-Click ******************************/
@@ -230,6 +329,83 @@ function onCatClick(cat, img) {
 
 /****************************** OLD CODE ******************************/
 
+/*
+//loads the explore page based on personal data
+function fill_personal_section() {
+
+  //set up user-specific variables
+  var user = JSON.stringify(currentUser.uid);
+  var promise = get_personal_data();
+  //set up other variables
+  var arrayName =  'personalArray';
+  var currArray = localStorage.getItem(arrayName);
+
+  console.log('filling personal section');
+  try {
+    //When a new user calls this function
+    //or when this function was called from the home page
+    if(localStorage.getItem('currentUser') !== user ||
+       localStorage.getItem('previous_page)' == 'home') ||
+       currArray !== null || currArray == undefined) {
+
+      //sets the current user
+      localStorage.setItem('currentUser', user);
+
+      //waits for data from database
+      promise.then(function(personalData) {
+
+        //???what is the value of personalData???
+
+        console.log('toString(): ' + personalData.toString());
+        console.log('personalData: ' + personalData);
+        //console.log('stringify: ' + JSON.stringify(personalData));
+
+        var test1 = localStorage.getItem('personalArray');
+        console.log('test1: ' + test1);
+        console.log('toString: ' + test1.toString());
+        console.log('stringify: ' + JSON.stringify(test1));
+
+        var test2 = JSON.parse(test1);
+        console.log('title: ' + test2[0].title)
+
+/*
+        //then shuffles the array and stores it in localStorage
+        shuffle_array(personalData, arrayName);
+
+        //uses data from localStorage instead of database
+        currArray = JSON.parse(window.localStorage.getItem(arrayName));
+* /
+
+
+      });
+
+    }
+  }
+  catch(e) {
+    console.log(e);
+  }
+}
+*/
+/*
+  //if coming from home page or 
+  //if the data for the string parameter is not in localStorage,
+  if(localStorage.getItem('previous_page') == 'home' || 
+     currArray == null || currArray == 'undefined'){
+    //gets json object from js file and stores it in localStorage
+    var fileArray = string + localStorage.explore_year;
+    console.log('adding ' + fileArray + ' to localStorage...');
+    localStorage.setItem(arrayName, JSON.stringify(window[fileArray]));
+  }
+
+  //uses data from localStorage instead of the js data file
+  currArray = JSON.parse(window.localStorage.getItem(arrayName));
+
+  //if function was called from home page GO button or explore page refresh button
+  if(localStorage.getItem("previous_page") != "closeup"){
+    //shuffles the array and stores it in localStorage
+    shuffle_array(currArray, arrayName);
+  }
+*/
 /*
 //declares variables to retrieve the correct data from the js data file
 var musicArray = 'music' + localStorage.selected_year;

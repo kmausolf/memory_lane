@@ -8,6 +8,17 @@ $(document).ready(function(){
     //currentUser is a variable from the file, personal.js
     currentUser = firebaseUser;
 
+    //hides personal buttons if the user isn't logged in
+    if(!currentUser) {
+      document.getElementById('personal_button').classList.add('hide');
+      document.getElementById('add_personal_button').classList.add('hide');
+    }
+    else {
+      getSetting('personal').then(function(status) {
+        setButtonState('personal', status);
+      });
+    }
+
     getSetting('music').then(function(status) {
       setButtonState('music', status);
     });
@@ -18,6 +29,9 @@ $(document).ready(function(){
       setButtonState('movies', status);
     });
 
+
+
+    localStorage.setItem('previous_page', 'settings');
     console.log('----- page setup complete -----');
   });
 });
