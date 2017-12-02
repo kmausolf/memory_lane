@@ -20,7 +20,7 @@ li {
   list-style: none; 
 }
 
-body{
+body {
   padding-top: 75px;
 }
 
@@ -34,23 +34,23 @@ img {
   height: auto;
 }
 
-/* old code */
-/*
-.nav a{
-color: #7c645b;
-font-size: 28px;
-font-weight: bold;
-padding: 14px 10px;
-font-family: 'Courgette', sans-serif;
+#display-pic {
+  max-height: 300px;
+  width: 100%;
+  overflow: scroll;
 }
 
-.nav li{
-display: inline;
+#lb-pic {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
 }
 
-.nav img{
-width: 28px;
-height: 28px;
-border: 0;
+#display-info {
+  height: 150px;
+  margin-top: 25px;
 }
-*/
+
+#display-pic img {
+  position: relative;
+}

@@ -47,41 +47,39 @@
     <div class="jumbotron">
       <div class="container">
         <script id="display-template" type="text/x-handlebars-template">
-          <center>
-
-            <!-- identify type of the item displayed -->
-            <h1>{{type}}</h1>
-
-            <!-- the title of the movie -->
-            <h2>{{title}}</h2>
-
-            <!-- path to full size image -->
-            <!-- <div id="display-pic">
-            <img src="{{picture}}"/>
-                    </div>-->
-
-            <!-- Lightbox image container -->
-            <div class="container-fluid" id="lb-pic">
-              <a href="{{picture}}" data-lightbox="{{title}}" title="">
-                <img src="{{picture}}" class="img-thumbnail" />
-              </a>
-            </div>
-
-            <!-- year of media -->
-            <div id="display-info">
-              <p> {{year}} </p>
-
-              <!-- Description for given content -->
-              <p> {{description}} </p>
-            </div>
-
-          </center>
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ytsuffix}}"></iframe>
+          </div>
+<br>
+<div class="container">
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <a data-toggle="collapse" href="#moreinfo">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            More Info
+          </h4>
+          </div>
+          </a>
+      <div id="moreinfo" class="panel-collapse collapse">
+        <div class="panel-body">Title: {{title}}</div>
+        <div class="panel-body">Year: {{year}}</div>
+        <div class="panel-body">Description: {{description}}</div>
+          </div>
+          </div>
+          </div>
+          </div>
         </script>
         <div id="display-result"></div>
       </div>
     </div>
 
     <!-- End of Jumbotron ------------------------>
+
+    <!-- More info ------------------------------->
+
+
+    <!-- End of More info ------------------------>
 
     <!-- Bootstrap Basic Template -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -94,3 +92,12 @@
     <!-- Bootstrap Basic Template End -->
   </body>
 </html>
+
+<!-- old code -->
+<!--
+<div class="container">
+<ul class="text-center">
+<li><a href="explore.html">Back to Explore</a></li>
+</ul>
+</div>
+-->
