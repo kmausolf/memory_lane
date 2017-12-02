@@ -24,69 +24,80 @@
         <ul class="pull-left">
         </ul>
         <ul class="pull-right">
-          <li data-login-item class="login-item"><button data-login-button id="modalButton" class="btn btn-info login_button" type="button" data-toggle="modal" data-target="#myModal" aria-expanded="false" >Login</button></li>
-          <li data-logout-item class="logout-item hidden"><button data-logout-button id="modalButton" class="logout_button btn btn-secondary btn-lg btn-block" type="button">Logout</button></li>
-        </ul>
+          
+          <li data-login-item class="login-item">
+            <button data-login-button id="login_button" class="modalButton btn btn-info" type="button" data-toggle="modal" data-target="#myModal" aria-expanded="false" >Login</button>
+          </li>
+          
+          <li data-logout-item class="logout-item hidden">
+            <button data-logout-button id="logout_button" class="modalButton btn btn-secondary btn-lg btn-block" type="button">Logout</button>
+          </li>
+        </ul>"
       </div>
       <!-- Login Modal from https://bootsnipp.com/snippets/featured/easy-log-in-form  -------------------->
-    <!-- collapsible elements -->
+      <!-- collapsible elements -->
 
 
-    <!-- old login form 
-    <form>
+      <!-- old login form 
+<form>
 
-      <!-- email id --
-      <div class="form-group" id="email_div">
-        <input class="form-control" id="login_email" type="email" placeholder="Email">
-      </div>
+<!-- email id --
+<div class="form-group" id="email_div">
+<input class="form-control" id="login_email" type="email" placeholder="Email">
+</div>
 
-      <!-- password --
-      <div class="form-group" id="password_div">
-        <input class="form-control" id="login_password" type="password" placeholder="Password">
-      </div>
+<!-- password --
+<div class="form-group" id="password_div">
+<input class="form-control" id="login_password" type="password" placeholder="Password">
+</div>
 
-      <!-- login/logout buttons --
-      <div>
-        <button id="login_button" class="btn btn-action" type="button">Log In</button>
-        <button id="logout_button" class="btn btn-action hide" type="button">Log Out</button>
-        <button id="signup_button" class="btn btn-secondary" type="button">Sign Up</button>
-      </div>
+<!-- login/logout buttons --
+<div>
+<button id="login_button" class="btn btn-action" type="button">Log In</button>
+<button id="logout_button" class="btn btn-action hide" type="button">Log Out</button>
+<button id="signup_button" class="btn btn-secondary" type="button">Sign Up</button>
+</div>
 
-    </form>
-    
-    <!---end old login form -------------------------------->
+</form>
+
+<!---end old login form -------------------------------->
 
       <div id="myModal" class="modal">
         <div class="modal-content">
-            <span class="close" data-dismiss="modal">&times;</span>
-            <section id="login-modal">
-              <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="form-wrap" id="login_form">
-                          <h1>Log in with your email account</h1>
-                              <form role="form" method="post" id="login_form" autocomplete="on">
-                                  <div class="form-group">
-                                      <label for="email" class="sr-only">Email</label>
-                                      <input type="email" name="email" id="login_email" class="form-control" placeholder="somebody@example.com">
-                                  </div>
-                                  <div class="form-group">
-                                      <label for="key" class="sr-only">Password</label>
-                                      <input type="password" name="key" id="login_password" class="form-control" placeholder="Password">
-                                  </div>
-                                  <div class="checkbox">
-                                      <span class="character-checkbox" onclick="showPassword()"></span>
-                                      <span class="label">Show password</span>
-                                  </div>
-                                  <input type="button" id="login_action" class="btn btn-action btn-lg btn-block" value="Log in">
-                                  <input type="button" id="signup_action" class="btn btn-secondary btn-lg btn-block" value="Sign Up">
+          <span class="close" data-dismiss="modal">&times;</span>
+          <section id="login-modal">
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-wrap" id="login_form">
+                    <h1>Log in with your email account</h1>
+                    <form role="form" method="post" id="login_form" autocomplete="on">
 
-                              </form>
-                              <hr>
-                        </div>
-                  </div> <!-- /.col-xs-12 -->
-                </div> <!-- /.row -->
-              </div> <!-- /.container -->
+                      <div class="form-group">
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="email" name="email" id="login_email" class="form-control" placeholder="somebody@example.com">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="key" class="sr-only">Password</label>
+                        <input type="password" name="key" id="login_password" class="form-control" placeholder="Password">
+                      </div>
+
+                      <div class="checkbox">
+                        <span class="character-checkbox" onclick="showPassword()"></span>
+                        <span class="label">Show password</span>
+                      </div>
+
+                      <input type="button" id="login_action" class="btn btn-action btn-lg btn-block" value="Log in">
+
+                      <input type="button" id="signup_action" class="btn btn-secondary btn-lg btn-block" value="Sign Up">
+
+                    </form>
+                    <hr>
+                  </div>
+                </div> <!-- /.col-xs-12 -->
+              </div> <!-- /.row -->
+            </div> <!-- /.container -->
           </section>
 
           <div class="modal fade forget-modal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
@@ -111,12 +122,12 @@
             </div> <!-- /.modal-dialog -->
           </div> <!-- /.modal -->
         </div>
-    </div>
-    <!-- End of Login -------------------------->
+      </div>
+      <!-- End of Login -------------------------->
     </nav>
     <!-- End of Nav Bar ------------------------>
 
-    
+
 
     <!-- Jumbotron ------------------------>
     <div class="jumbotron">

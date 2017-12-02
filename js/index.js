@@ -63,32 +63,32 @@
   });
 
   /****************************** Login, Logout, Signup ******************************/
-      /******************************Modal Functionality**********************/
-      //from https://www.w3schools.com/howto/howto_css_modals.asp
-      // Get the modal
+  /******************************Modal Functionality**********************/
+  //from https://www.w3schools.com/howto/howto_css_modals.asp
+  // Get the modal
   var modal = document.getElementById('myModal');
 
   // Get the button that opens the modal
-  var btn = document.getElementById("modalButton");
+  var btn = document.getElementsByClassName("modalButton");
 
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
 
   // When the user clicks on the button, open the modal 
   btn.onclick = function() {
-      modal.style.display = "block";
+    modal.style.display = "block";
   }
 
   // When the user clicks on <span> (x), close the modal
   span.onclick = function() {
-      modal.style.display = "none";
+    modal.style.display = "none";
   }
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
-      }
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
   }
 
   //Tutorial: https://www.youtube.com/watch?v=-OKrloDzGpU
@@ -118,12 +118,6 @@
   const login_action = document.getElementById('login_action');
   const signup_action = document.getElementById('signup_action');
 
-  //test eventlistener bug
-  login_button.addEventListener('click', e=> {
-    //popup
-    window.alert("Working!");
-  });
-
   //Adds login event
   login_action.addEventListener('click', e => {
     //Get email and password
@@ -131,7 +125,7 @@
     const password = login_password.value;
     //Attempts to sign in with entered email and password
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error)
-    {
+                                                                      {
       var errorCode = error.code;
       var errorMessage = error.message;
       console.log('error code: ' + errorCode);
@@ -142,13 +136,13 @@
   //Adds logout event
   logout_button.addEventListener('click', e => {
     try {
+      $('[data-login-item], [data-logout-item]').toggleClass('hidden');
       firebase.auth().signOut();
     }
     catch (e) {
       console.log(e);
       alert('logout failed');
     }
-
   });
 
   //Adds signup Event
@@ -176,18 +170,14 @@
 
   //Listener that activates when a user is logged in or out
   firebase.auth().onAuthStateChanged(firebaseUser => {
-    //toggle the login/logout buttons
-    $('[data-login-button], [data-logout-button]').click(function(){
-      $('[data-login-item], [data-logout-item]').toggleClass('hidden');
-    });
-
     //close modal and show appropriate button for logged-in users
     if(firebaseUser) {
       console.log('user has logged in');
       //removes appropriate buttons
       $('#myModal').modal('hide');
-    }
 
+      $('[data-login-item], [data-logout-item]').toggleClass('hidden');
+    }
     //shows appropriate buttons for logged-out users
     else {
       console.log('user is logged out');
@@ -200,21 +190,19 @@
 })();
 
 //Adds Show Password functionality
-  function showPassword() {
-    
-    var key_attr = $('#login_password').attr('type');
-    
-    if(key_attr != 'text') {
-        
-        $('.checkbox').addClass('show');
-        $('#login_password').attr('type', 'text');
-        
-    } else {
-        
-        $('.checkbox').removeClass('show');
-        $('#login_password').attr('type', 'password');
-        
-    }  
-  }
+function showPassword() {
 
+  var key_attr = $('#login_password').attr('type');
 
+  if(key_attr != 'text') {
+
+    $('.checkbox').addClass('show');
+    $('#login_password').attr('type', 'text');
+
+  } else {
+
+    $('.checkbox').removeClass('show');
+    $('#login_password').attr('type', 'password');
+
+  }  
+}
