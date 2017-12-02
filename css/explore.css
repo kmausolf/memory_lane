@@ -1,5 +1,19 @@
 /********** nav bar **********/
 
+.navbar-default {
+  background-image: url("../images/background.jpg");
+  height = 15%;
+}
+
+#explore_head {
+  background-color: rgba(255, 255, 255, .7);
+  padding-top: 6%;
+  width: -webkit-fill-available;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 3%;
+}
+
 .nav #back_button {
   width: 50px;
   height: 50px;
@@ -18,12 +32,12 @@
 }
 
 .nav .text-center{
-  color: #7c645b;
+  color: ##464646;
   font-weight: bold;
-  font-size: 28px;
-  font-family: 'Courgette', sans-serif;
-  margin-top: 5px;
-  left: -25px;
+  font-size: 44px;
+  font-family: 'Rochester', sans-serif;
+  letter-spacing: 5vw;
+  margin-btop: -3px;
 }
 
 
@@ -62,33 +76,47 @@ ul{
 
 /********** section containers **********/
 
+.container {
+  padding: 0;
+}
+
+.panel {
+  margin-bottom: 0px;
+}
+
 .panel > .panel-heading{
   background-image: none;
-  color: white;
+  color: #464646;
+  font-family: "Rochester", cursive;
+}
+
+.panel > .panel-heading > h2 {
+  font-size: 6vh;
+  margin: 5px;
 }
 
 #music-rec{
-  background-color: #E3A7D8;
+  background-color: #F43E3E;
 }
 
 #music-panel{
-  background-color: #F1D3EC;
+  background-color: rgba(244, 62, 62, .25);
 }
 
 #movie-rec{
-  background-color: #A7E3D0;
+  background-color: #75E2ED;
 }
 
 #movie-panel{
-  background-color: #D3F1E8;
+  background-color: rgba(117, 226, 237, .25);
 }
 
 #shows-rec{
-  background-color: #B2A7E3;
+  background-color: #8CE998;
 }
 
 #shows-panel{
-  background-color: #D8D3F1;
+  background-color: rgba(140, 233, 152, .25);
 }
 
 #personal-rec{
