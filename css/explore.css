@@ -1,8 +1,17 @@
+
+/********** body **********/
+body {
+  background-image:url("../images/background.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 /********** nav bar **********/
 
 .navbar-default {
-  background-image: url("../images/background.jpg");
-  height = 15%;
+  background-color: rgba(255, 255, 255, .5);
 }
 
 #explore_head {
@@ -41,7 +50,7 @@
 }
 
 
-/********** body & jumbotron **********/
+/********** jumbotron **********/
 
 body{
   padding-top: 100px;
@@ -52,10 +61,9 @@ ul{
 }
 
 .jumbotron{
-  background-image:url('');
-  min-height: 900px;
-  background-repeat: no-repeat;
+  background-color: white;
   background-size: cover;
+  block-size: 100vh;
 }
 
 .jumbotron .container{
@@ -75,6 +83,10 @@ ul{
 }
 
 /********** section containers **********/
+
+#blank {
+  height: 30%;
+}
 
 .container {
   padding: 0;

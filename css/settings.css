@@ -1,4 +1,23 @@
-/********** nav bar **********/.
+
+/********** body **********/
+body {
+  background-image:url("../images/background.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/********** nav bar **********/
+
+#settings_head {
+  background-color: rgba(255, 255, 255, .5);
+  padding-top: 6%;
+  width: -webkit-fill-available;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 3%;
+}
 
 .nav #back_button {
   width: 50px;
@@ -25,11 +44,9 @@ ul {
 /********** body **********/
 
 .jumbotron {
-  background-image:url('');
-  min-height: 100vh;
-  background-repeat: no-repeat;
+  background-color: rgba(255, 255, 255, .8);
   background-size: cover;
-  background-color: white;
+  block-size: 100vh;
 }
 
 .jumbotron .container {
