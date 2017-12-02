@@ -352,7 +352,21 @@ function onCatClick(cat, img) {
   //set up data for closeup page load
   localStorage.setItem('cat', JSON.stringify(window[cat]));
   localStorage.setItem('img', img);
+  localStorage.setItem('getPersonal', JSON.stringify(false));
   location.assign("closeup.html");
+};
+
+//functionality for when a thumbnail in the personal section is clicked
+function onCatClickPersonal(index, cat, img) {
+  //variable for section+year (ex: movies1970)
+  //cat = cat + localStorage.explore_year;
+  var personalArray = JSON.parse(localStorage.getItem('personalArray'));
+  //set up data for closeup page load
+  localStorage.setItem('cat', JSON.stringify(personalArray));
+  localStorage.setItem('img', img);
+  localStorage.setItem('index', index);
+  localStorage.setItem('getPersonal', JSON.stringify(true));
+  location.assign("closeup_original.html");
 };
 
 /****************************** OLD CODE ******************************/
