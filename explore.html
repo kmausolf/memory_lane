@@ -18,14 +18,10 @@
 
     <!-- Nav Bar -------------------------------------------------->
     <nav class="nav navbar-default navbar-fixed-top">
-      <div class="container">
+      <div id="explore_head" class="container">
 
         <ul class="pull-left">
           <li><a href="index.html"><img id="back_button" src="images/back.png"></a></li>
-        </ul>
-
-        <ul class="pull-right">
-          <li><a href="settings.html"><img id="settings_button" src="images/settings_gear.png"></a></li>
         </ul>
 
         <ul class="text-center">
@@ -38,6 +34,12 @@ document.write("<li><a href=\"index.html\">" + localStorage.selected_year + "</a
             document.write(localStorage.selected_year);
           </script>
         </ul>
+
+        <ul class="pull-right">
+          <li><a href="settings.html"><img id="settings_button" src="images/settings_gear.png"></a></li>
+        </ul>
+
+        
 
       </div>
     </nav>
