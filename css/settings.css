@@ -10,6 +10,10 @@ body {
 
 /********** nav bar **********/
 
+.navbar-default {
+  background-color: rgba(248, 248, 248, .5);
+}
+
 #settings_head {
   background-color: rgba(255, 255, 255, .5);
   padding-top: 6%;
@@ -27,14 +31,17 @@ body {
   z-index: 1;
 }
 
+.pull-left {
+  margin-right: -50%; 
+}
+
 .nav .text-center {
-  color: #7c645b;
+  color: #464646;
   font-weight: bold;
-  font-size: 28px;
-  font-family: 'Courgette', sans-serif;
+  font-size: 44px;
+  font-family: 'Rochester', sans-serif;
   position: relative;
   margin-top: 5px;
-  left: -25px;
 }
 
 ul {
@@ -54,32 +61,33 @@ ul {
   top: 100px;
 }
 
+.container div {
+  display: flex;
+  flex-direction: column;
+}
+
 .jumbotron h1 {
-  color: #fff;
-  text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
-  font-size: 40px;
-  font-family: 'Courgette', cursive;
+  color: #000;
+  font-size: 6vh;
+  margin-top: 5%;
+  font-family: 'Reem Kufi', cursive;
 }
 
 .settings {
   border: none;
-  color: white;
+  color: black;
   padding: 15px 32px;
+  margin-top: 1vh;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  border-radius: 8px
+  font-family: "Reem Kufi", cursive;
+  font-size: 4vh;
+  border-radius: 8px;
+  width: 70%;
 }
 
 #add_personal_button {
+  width: 80vw;
   background-color: #008CBA;
-}
-
-body {
-
 }

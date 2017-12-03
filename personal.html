@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Arimo|Courgette" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Reem+Kufi|Rochester|Rouge+Script" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
@@ -26,44 +26,41 @@
   </head>
 
   <body>
-    <!-- (Start) Nav Bar ------------------------>
+    <!-- Nav Bar ------------------------>
     <nav class="nav navbar-default navbar-fixed-top">
-      <div class="container">
-        <ul class="text-center">
+      <div id="settings_head" class="container">
 
-          <ul class="pull-left">
-            <li><a href="settings.html"><img id="back_button" src="images/back.png"></a>
-            </li>
-          </ul>
-
-          <ul class="text-center">
-            <li>Add Memory~</li>
-          </ul>
-
+        <ul class="pull-left">
+          <li><a href="explore.html"><img id="back_button" src="images/back.png"></a></li>
         </ul>
+
+        <ul class="text-center">
+          <li>Commit to Memory</li>
+        </ul>
+
       </div>
     </nav>
-    <!-- (End) Nav Bar ------------------------>
+    <!-- End of Nav Bar ------------------------>
 
     <!-- (Start) Jumbotron ------------------------>
-
+    <div id="blank"></div> 
     <h1>Personal Info</h1>
     <div id='content_wrapper'>
 
       <form id="personal_form">
         
         <!-- forces the user to input a year for the memory -->
-        Full Year: <input type="number" id="year" form="personal_form" min="1900" max="2017" value="2017" required><br>
+        Full Year: <input type="number" id="year" form="personal_form" min="1900" max="2017" placeholder="2017" required><br>
         
         <!-- forces the user to input a title for the memory -->
-        Title: <input type="text" id="title" form="personal_form" maxlength="20" required value="Enter your title here!"><br>
+        Title: <input type="text" id="title" form="personal_form" maxlength="20" required placeholder="Enter your title here!"><br>
         
         <!-- forces the user to input a description for the memory -->
         <p>Description:</p>
-        <textarea id="description" form="personal_form" rows="4" cols="50" maxlength="200" required>Enter a description of your memory here!</textarea>
+        <textarea id="description" form="personal_form" rows="4" cols="50" maxlength="200" placeholder="Enter a description of your memory here!" style="width:75vw" required></textarea>
 
         <!-- provides the user with a submit button to send data to the database -->
-        <button type="button" onclick="submitForm()" required>Submit</button>
+        <button id="submit_button" type="button" onclick="submitForm()" required>Submit</button>
         <input id="submit_handler" type="submit" style="display: none">
 
       </form>

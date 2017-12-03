@@ -199,6 +199,15 @@ body {
   font-family: 'Rouge Script', cursive;
 }
 
+
+.set img {
+  height: 3vh;
+}
+
+.set span {
+  height: 16vh;
+}
+
 #years {
   display: flex;
   flex-direction: row;
@@ -222,6 +231,10 @@ body {
   margin-top: 10%;
 }
 
+.panel {
+  border-radius: 0px;
+}
+
 .padding-0{
     padding-right:0;
     padding-left:0;
@@ -230,6 +243,9 @@ body {
 #years button {
   width: 30px;
   justify-content: center;
+  background-color: rgba(0,0,0,0);
+  border-color: rgba(0,0,0,0);
+  margin-left: -25px;
 }
 
 

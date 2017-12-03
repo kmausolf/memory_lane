@@ -141,11 +141,15 @@ function toggleSetting(setting) {
 function setButtonState(button, status) {
   var buttonID = button + '_button';
   if(status) {
-    document.getElementById(buttonID).style.backgroundColor = '#11E93E';
+    document.getElementById(buttonID).style.backgroundColor = 'rgba(88, 146, 74, .3)';
+    document.getElementById(buttonID).style.border = "thick solid #58924A";
+    document.getElementById(buttonID).style.color = '#000000';    
     document.getElementById(buttonID).firstChild.data = button + ' (on)';
   }
   else {
-    document.getElementById(buttonID).style.backgroundColor = '#FF3333';
+    document.getElementById(buttonID).style.backgroundColor = 'rgba(187, 199, 192)';
+    document.getElementById(buttonID).style.border = 'thick solid #BBC7C0';
+    document.getElementById(buttonID).style.color = '#828282';    
     document.getElementById(buttonID).firstChild.data = button + ' (off)';
   }
 }

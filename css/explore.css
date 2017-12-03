@@ -6,6 +6,15 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  padding-top: 100px;
+}
+
+#bg-cover {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(255,255,255,.7);
+  position: fixed;
+  z-index: -100;
 }
 
 /********** nav bar **********/
@@ -41,7 +50,7 @@ body {
 }
 
 .nav .text-center{
-  color: ##464646;
+  color: #464646;
   font-weight: bold;
   font-size: 44px;
   font-family: 'Rochester', sans-serif;
@@ -51,10 +60,6 @@ body {
 
 
 /********** jumbotron **********/
-
-body{
-  padding-top: 100px;
-}
 
 ul{
   list-style-type: none;
@@ -132,11 +137,11 @@ ul{
 }
 
 #personal-rec{
-  background-color: #A7D8E3;
+  background-color: #9B51E0;
 }
 
 #personal-panel{
-  background-color: #D3ECF1;
+  background-color: #ECDDFA;
 }
 
 /********** section content **********/
