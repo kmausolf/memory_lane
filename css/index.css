@@ -258,12 +258,14 @@ body {
 #submit {
   background: radial-gradient(#86c677, #427237);
   border-color: rgba(0,0,0,0);
-  border-radius: 25%;
   font-size: 60px;
-  width: 160px;
-  height: 90px;
   color: black;
   font-family: "Reem Kufi";
+  border: none;
+  padding: 6px;
+  padding-top: 2vh;
+  width: 41vw;
+  border-radius: 23px;
 }
 
 #submit a {
